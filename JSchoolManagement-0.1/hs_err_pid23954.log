@@ -1,0 +1,1701 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0xaef5fa04, pid=23954, tid=23987
+#
+# JRE version: OpenJDK Runtime Environment (11.0.11+9) (build 11.0.11+9-post-Debian-1deb10u1)
+# Java VM: OpenJDK Server VM (11.0.11+9-post-Debian-1deb10u1, mixed mode, g1 gc, linux-)
+# Problematic frame:
+# C  [libc.so.6+0x26a04]
+#
+# Core dump will be written. Default location: core.23954 (may not exist)
+#
+# If you would like to submit a bug report, please visit:
+#   https://bugs.debian.org/openjdk-11
+# The crash happened outside the Java Virtual Machine in native code.
+# See problematic frame for where to report the bug.
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -Dhttps.protocols=TLSv1,TLSv1.1,TLSv1.2 -Djavafx.embed.singleThread=true -Dawt.useSystemAAFontSettings=on bluej.Boot -javafxpath=/usr/share/openjfx
+
+Host: rev 1 (v7l), 4 cores, 1G, Debian GNU/Linux 10 (buster)
+Time: Thu Jun 10 13:16:27 2021 PST elapsed time: 5312.832185 seconds (0d 1h 28m 32s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0f279400):  JavaThread "AWT-XAWT" daemon [_thread_in_native, id=23987, stack(0x7f660000,0x7f6b0000)]
+
+Stack: [0x7f660000,0x7f6b0000],  sp=0x7f6aeab0,  free space=314k
+Native frames: (J=compiled Java code, A=aot compiled Java code, j=interpreted, Vv=VM code, C=native code)
+C  [libc.so.6+0x26a04]
+
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+J 2512  sun.awt.X11.XlibWrapper.XEventsQueued(JI)I java.desktop@11.0.11 (0 bytes) @ 0xac889ccc [0xac889c80+0x0000004c]
+j  sun.awt.X11.XToolkit.run(Z)V+63 java.desktop@11.0.11
+j  sun.awt.X11.XToolkit.run()V+5 java.desktop@11.0.11
+j  java.lang.Thread.run()V+11 java.base@11.0.11
+v  ~StubRoutines::call_stub
+
+siginfo: si_signo: 11 (SIGSEGV), si_code: 1 (SEGV_MAPERR), si_addr: 0x354fddf0
+
+Register to memory mapping:
+
+  r0  = 0xaf02ee14
+0xaf02ee14: <offset 0x000f5e14> in /lib/arm-linux-gnueabihf/libc.so.6 at 0xaef39000
+
+  r1  = 0x00000000
+0x0 is NULL
+
+  r2  = 0x00000000
+0x0 is NULL
+
+  r3  = 0x00000001
+0x00000001 is an unknown value
+
+  r4  = 0x354fdde8
+0x354fdde8 is an unknown value
+
+  r5  = 0xaf032148
+0xaf032148: <offset 0x000f9148> in /lib/arm-linux-gnueabihf/libc.so.6 at 0xaef39000
+
+  r6  = 0x8aaa6378
+0x8aaa6378 points into unknown readable memory: 0x83f57a40 | 40 7a f5 83
+
+  r7  = 0x00000000
+0x0 is NULL
+
+  r8  = 0x000005f5
+0x000005f5 is an unknown value
+
+  r9  = 0x00000000
+0x0 is NULL
+
+  r10 = 0xaf032140
+0xaf032140: <offset 0x000f9140> in /lib/arm-linux-gnueabihf/libc.so.6 at 0xaef39000
+
+  fp  = 0xaf02f000
+0xaf02f000: <offset 0x000f6000> in /lib/arm-linux-gnueabihf/libc.so.6 at 0xaef39000
+
+  r12 = 0x89c9f3d0
+0x89c9f3d0: <offset 0x008323d0> in /usr/lib/arm-linux-gnueabihf/dri/swrast_dri.so at 0x8946d000
+
+  sp  = 0x7f6aeab0
+0x7f6aeab0 is pointing into the stack for thread: 0x0f279400
+
+  lr  = 0x8999f571
+0x8999f571: <offset 0x00532571> in /usr/lib/arm-linux-gnueabihf/dri/swrast_dri.so at 0x8946d000
+
+  pc  = 0xaef5fa04
+0xaef5fa04: <offset 0x00026a04> in /lib/arm-linux-gnueabihf/libc.so.6 at 0xaef39000
+
+
+
+Registers:
+  r0  = 0xaf02ee14
+  r1  = 0x00000000
+  r2  = 0x00000000
+  r3  = 0x00000001
+  r4  = 0x354fdde8
+  r5  = 0xaf032148
+  r6  = 0x8aaa6378
+  r7  = 0x00000000
+  r8  = 0x000005f5
+  r9  = 0x00000000
+  r10 = 0xaf032140
+  fp  = 0xaf02f000
+  r12 = 0x89c9f3d0
+  sp  = 0x7f6aeab0
+  lr  = 0x8999f571
+  pc  = 0xaef5fa04
+  cpsr = 0x60080030
+
+Top of Stack: (sp=0x7f6aeab0)
+0x7f6aeab0:   af032140 00000001 af02f50c 00000001
+0x7f6aeac0:   00000001 7fb53d37 7f6aeb10 aef5fb5b
+0x7f6aead0:   0000000b 8a139209 0f20c7e8 8a1377bf
+0x7f6aeae0:   0f20be98 8a12e651 7f6aeb18 00001b44
+0x7f6aeaf0:   aef2b290 ac889ce8 00000001 8cc1ab30
+0x7f6aeb00:   8ce94c68 7fb27fc0 00000000 7f6aeb1c
+0x7f6aeb10:   7f6aeb48 ac27faa0 00000001 0f20be98
+0x7f6aeb20:   00000000 7f6aeb24 7fb53d37 7f6aeb6c 
+
+Instructions: (pc=0xaef5fa04)
+0xaef5f904:   58e44d19 686a447d 1a136820 fab32800
+0xaef5f914:   ea4ff383 bf081353 b97b2300 23004813
+0xaef5f924:   f3bf6023 44788f5b 2f00e850 3100e840
+0xaef5f934:   d1f92900 dc062a01 bd382000 eb9ef7f0
+0xaef5f944:   606b2300 2181e7ea f04f2201 f7f00cf0
+0xaef5f954:   e7f1fef5 f84af07d bf00e7d1 000d080c
+0xaef5f964:   000cf712 00000100 000d07e8 000d07c6
+0xaef5f974:   4a054b04 589b447b b90b681b bd14f7ff
+0xaef5f984:   47702000 000cf684 000000ac 4880e92d
+0xaef5f994:   f8dfb085 e9cdb194 92030101 2b0044fb
+0xaef5f9a4:   80b7f040 4a624b61 a188f8df 9200447a
+0xaef5f9b4:   5003f85b 220144fa 3f00e855 d1052b00
+0xaef5f9c4:   2100e845 d1f72900 8f5bf3bf 809df040
+0xaef5f9d4:   681e9b02 d0732e00 27006874 9b00b364
+0xaef5f9e4:   e9d33c01 60748900 8f5bf3bf 3f00e855
+0xaef5f9f4:   7200e845 d1f92a00 dc582b01 1404eb06
+0xaef5fa04:   2b0368a3 2b04d047 2b02d03a 2201d02e
+0xaef5fa14:   3f00e855 d1052b00 2100e845 d1f72900
+0xaef5fa24:   8f5bf3bf e9dad13f 454b2300 4542bf08
+0xaef5fa34:   6874d1ce d1d22c00 9a026833 b1136013
+0xaef5fa44:   f7f04630 2300eb1c 8f5bf3bf 2f00e855
+0xaef5fa54:   3100e845 d1f92900 ddac2a01 21814628
+0xaef5fa64:   f04f2201 f7f00cf0 e7a4fe69 e9d44a32
+0xaef5fa74:   98013103 2002f85b 40536812 e7c64798
+0xaef5fa84:   60a74a2d f85b68e3 99012002 68126920
+0xaef5fa94:   47984053 4a28e7bb f85b68e3 68122002
+0xaef5faa4:   47984053 4628e7b3 ffa0f07c 4628e7bb
+0xaef5fab4:   22012181 f04f2300 f7f00cf0 e79dfe3f
+0xaef5fac4:   22014b1e 701a447b 8f5bf3bf 3f00e855
+0xaef5fad4:   6100e845 d1f92900 dc1d4293 b18b9b03
+0xaef5fae4:   4b184a17 447b447a d20b429a 46141e5d
+0xaef5faf4:   f0251aad 35040503 f8544415 47983b04 
+
+
+Stack slot to memory mapping:
+stack at sp + 0 slots: 0xaf032140: <offset 0x000f9140> in /lib/arm-linux-gnueabihf/libc.so.6 at 0xaef39000
+stack at sp + 1 slots: 0x00000001 is an unknown value
+stack at sp + 2 slots: 0xaf02f50c: <offset 0x000f650c> in /lib/arm-linux-gnueabihf/libc.so.6 at 0xaef39000
+stack at sp + 3 slots: 0x00000001 is an unknown value
+stack at sp + 4 slots: 0x00000001 is an unknown value
+stack at sp + 5 slots: 0x7fb53d37 is pointing into metadata
+stack at sp + 6 slots: 0x7f6aeb10 is pointing into the stack for thread: 0x0f279400
+stack at sp + 7 slots: 0xaef5fb5b: exit+0x0000000e in /lib/arm-linux-gnueabihf/libc.so.6 at 0xaef39000
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x8b807250, length=22, elements={
+0xae40ec00, 0x8ac22c00, 0x8ac26400, 0x8ac31000,
+0x8ac33800, 0x8ac35000, 0x8ac36800, 0x8ac82c00,
+0x8a617400, 0x0f0c4c00, 0x0f178800, 0x0f18f000,
+0x0f274400, 0x0f279400, 0x8b435c00, 0x7d724800,
+0x7d764000, 0x83f2dc00, 0x8b263c00, 0x7eb5c000,
+0x7671c800, 0x7e1b0000
+}
+
+Java Threads: ( => current thread )
+  0xae40ec00 JavaThread "main" [_thread_blocked, id=23955, stack(0xae593000,0xae5e3000)]
+  0x8ac22c00 JavaThread "Reference Handler" daemon [_thread_blocked, id=23962, stack(0x8b72e000,0x8b77e000)]
+  0x8ac26400 JavaThread "Finalizer" daemon [_thread_blocked, id=23963, stack(0x8b52e000,0x8b57e000)]
+  0x8ac31000 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=23964, stack(0x8abb0000,0x8ac00000)]
+  0x8ac33800 JavaThread "Service Thread" daemon [_thread_blocked, id=23965, stack(0x8ab60000,0x8abb0000)]
+  0x8ac35000 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=23966, stack(0x8a80d000,0x8a88d000)]
+  0x8ac36800 JavaThread "Sweeper thread" daemon [_thread_blocked, id=23967, stack(0x8ab10000,0x8ab60000)]
+  0x8ac82c00 JavaThread "Common-Cleaner" daemon [_thread_blocked, id=23969, stack(0x8a73b000,0x8a78b000)]
+  0x8a617400 JavaThread "JavaFX-Launcher" [_thread_blocked, id=23970, stack(0x8a5b0000,0x8a600000)]
+  0x0f0c4c00 JavaThread "QuantumRenderer-0" daemon [_thread_blocked, id=23971, stack(0x8a460000,0x8a4b0000)]
+  0x0f178800 JavaThread "InvokeLaterDispatcher" daemon [_thread_blocked, id=23981, stack(0x80c77000,0x80cc7000)]
+  0x0f18f000 JavaThread "JavaFX Application Thread" [_thread_in_native, id=23982, stack(0x80c27000,0x80c77000)]
+  0x0f274400 JavaThread "Java2D Disposer" daemon [_thread_blocked, id=23986, stack(0x7f6b0000,0x7f700000)]
+=>0x0f279400 JavaThread "AWT-XAWT" daemon [_thread_in_native, id=23987, stack(0x7f660000,0x7f6b0000)]
+  0x8b435c00 JavaThread "Thread-2" [_thread_blocked, id=23991, stack(0x7f38a000,0x7f3da000)]
+  0x7d724800 JavaThread "Prism Font Disposer" daemon [_thread_blocked, id=23998, stack(0x7e460000,0x7e4b0000)]
+  0x7d764000 JavaThread "pool-2-thread-1" [_thread_blocked, id=24000, stack(0x7d3a7000,0x7d3f7000)]
+  0x83f2dc00 JavaThread "Cleaner-0" daemon [_thread_blocked, id=24005, stack(0x7d1e7000,0x7d237000)]
+  0x8b263c00 JavaThread "vm-event-handler" [_thread_blocked, id=24028, stack(0x7cc70000,0x7ccc0000)]
+  0x7eb5c000 JavaThread "Disposer" daemon [_thread_blocked, id=24035, stack(0x7f111000,0x7f161000)]
+  0x7671c800 JavaThread "SwingNode Disposer" daemon [_thread_blocked, id=24049, stack(0x7d3f7000,0x7d447000)]
+  0x7e1b0000 JavaThread "BlueJ compiler thread" [_thread_blocked, id=24051, stack(0x78c53000,0x78ca3000)]
+
+Other Threads:
+  0x8ac1c800 VMThread "VM Thread" [stack: 0x8ad34000,0x8adb4000] [id=23961]
+  0x8ac7d000 WatcherThread [stack: 0x8a78d000,0x8a80d000] [id=23968]
+  0xae423000 GCTaskThread "GC Thread#0" [stack: 0xac1bc000,0xac23c000] [id=23956]
+  0x83f53000 GCTaskThread "GC Thread#1" [stack: 0x7f4e0000,0x7f560000] [id=23988]
+  0x83f42c00 GCTaskThread "GC Thread#2" [stack: 0x7f45e000,0x7f4de000] [id=23989]
+  0x83f48400 GCTaskThread "GC Thread#3" [stack: 0x7f3dc000,0x7f45c000] [id=23990]
+  0xae46f000 ConcurrentGCThread "G1 Main Marker" [stack: 0xac131000,0xac1b1000] [id=23957]
+  0xae470400 ConcurrentGCThread "G1 Conc#0" [stack: 0x8b780000,0x8b800000] [id=23958]
+  0xae4c8800 ConcurrentGCThread "G1 Refine#0" [stack: 0x8b580000,0x8b600000] [id=23959]
+  0xae4c9c00 ConcurrentGCThread "G1 Young RemSet Sampling" [stack: 0x8b380000,0x8b400000] [id=23960]
+
+Threads with active compile tasks:
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap:
+ garbage-first heap   total 179200K, used 146510K [0x8cc00000, 0xac000000)
+  region size 1024K, 31 young (31744K), 1 survivors (1024K)
+ Metaspace       used 46565K, capacity 47848K, committed 47960K, reserved 48432K
+Heap Regions: E=young(eden), S=young(survivor), O=old, HS=humongous(starts), HC=humongous(continues), CS=collection set, F=free, A=archive, TAMS=top-at-mark-start (previous, next)
+|   0|0x8cc00000, 0x8cd00000, 0x8cd00000|100%| O|  |TAMS 0x8cd00000, 0x8cc00000| Untracked 
+|   1|0x8cd00000, 0x8ce00000, 0x8ce00000|100%|HS|  |TAMS 0x8ce00000, 0x8cd00000| Complete 
+|   2|0x8ce00000, 0x8cf00000, 0x8cf00000|100%| O|  |TAMS 0x8cf00000, 0x8ce00000| Untracked 
+|   3|0x8cf00000, 0x8d000000, 0x8d000000|100%| O|  |TAMS 0x8d000000, 0x8cf00000| Untracked 
+|   4|0x8d000000, 0x8d100000, 0x8d100000|100%| O|  |TAMS 0x8d100000, 0x8d000000| Untracked 
+|   5|0x8d100000, 0x8d200000, 0x8d200000|100%| O|  |TAMS 0x8d200000, 0x8d100000| Untracked 
+|   6|0x8d200000, 0x8d300000, 0x8d300000|100%| O|  |TAMS 0x8d300000, 0x8d200000| Untracked 
+|   7|0x8d300000, 0x8d400000, 0x8d400000|100%| O|  |TAMS 0x8d400000, 0x8d300000| Untracked 
+|   8|0x8d400000, 0x8d500000, 0x8d500000|100%| O|  |TAMS 0x8d500000, 0x8d400000| Untracked 
+|   9|0x8d500000, 0x8d600000, 0x8d600000|100%| O|  |TAMS 0x8d600000, 0x8d500000| Untracked 
+|  10|0x8d600000, 0x8d700000, 0x8d700000|100%| O|  |TAMS 0x8d700000, 0x8d600000| Untracked 
+|  11|0x8d700000, 0x8d800000, 0x8d800000|100%| O|  |TAMS 0x8d800000, 0x8d700000| Untracked 
+|  12|0x8d800000, 0x8d900000, 0x8d900000|100%| O|  |TAMS 0x8d900000, 0x8d800000| Untracked 
+|  13|0x8d900000, 0x8da00000, 0x8da00000|100%| O|  |TAMS 0x8da00000, 0x8d900000| Untracked 
+|  14|0x8da00000, 0x8db00000, 0x8db00000|100%| O|  |TAMS 0x8db00000, 0x8da00000| Untracked 
+|  15|0x8db00000, 0x8dc00000, 0x8dc00000|100%| O|  |TAMS 0x8dc00000, 0x8db00000| Untracked 
+|  16|0x8dc00000, 0x8dd00000, 0x8dd00000|100%| O|  |TAMS 0x8dd00000, 0x8dc00000| Untracked 
+|  17|0x8dd00000, 0x8de00000, 0x8de00000|100%| O|  |TAMS 0x8de00000, 0x8dd00000| Untracked 
+|  18|0x8de00000, 0x8df00000, 0x8df00000|100%| O|  |TAMS 0x8df00000, 0x8de00000| Untracked 
+|  19|0x8df00000, 0x8e000000, 0x8e000000|100%| O|  |TAMS 0x8e000000, 0x8df00000| Untracked 
+|  20|0x8e000000, 0x8e100000, 0x8e100000|100%| O|  |TAMS 0x8e100000, 0x8e000000| Untracked 
+|  21|0x8e100000, 0x8e200000, 0x8e200000|100%| O|  |TAMS 0x8e200000, 0x8e100000| Untracked 
+|  22|0x8e200000, 0x8e300000, 0x8e300000|100%| O|  |TAMS 0x8e300000, 0x8e200000| Untracked 
+|  23|0x8e300000, 0x8e400000, 0x8e400000|100%|HS|  |TAMS 0x8e400000, 0x8e300000| Complete 
+|  24|0x8e400000, 0x8e500000, 0x8e500000|100%|HC|  |TAMS 0x8e500000, 0x8e400000| Complete 
+|  25|0x8e500000, 0x8e600000, 0x8e600000|100%|HS|  |TAMS 0x8e600000, 0x8e500000| Complete 
+|  26|0x8e600000, 0x8e700000, 0x8e700000|100%|HC|  |TAMS 0x8e700000, 0x8e600000| Complete 
+|  27|0x8e700000, 0x8e800000, 0x8e800000|100%|HC|  |TAMS 0x8e800000, 0x8e700000| Complete 
+|  28|0x8e800000, 0x8e900000, 0x8e900000|100%|HC|  |TAMS 0x8e900000, 0x8e800000| Complete 
+|  29|0x8e900000, 0x8ea00000, 0x8ea00000|100%|HC|  |TAMS 0x8ea00000, 0x8e900000| Complete 
+|  30|0x8ea00000, 0x8eb00000, 0x8eb00000|100%|HC|  |TAMS 0x8eb00000, 0x8ea00000| Complete 
+|  31|0x8eb00000, 0x8ec00000, 0x8ec00000|100%|HC|  |TAMS 0x8ec00000, 0x8eb00000| Complete 
+|  32|0x8ec00000, 0x8ed00000, 0x8ed00000|100%|HC|  |TAMS 0x8ed00000, 0x8ec00000| Complete 
+|  33|0x8ed00000, 0x8ee00000, 0x8ee00000|100%|HC|  |TAMS 0x8ee00000, 0x8ed00000| Complete 
+|  34|0x8ee00000, 0x8ef00000, 0x8ef00000|100%| O|  |TAMS 0x8ef00000, 0x8ee00000| Untracked 
+|  35|0x8ef00000, 0x8f000000, 0x8f000000|100%| O|  |TAMS 0x8f000000, 0x8ef00000| Untracked 
+|  36|0x8f000000, 0x8f100000, 0x8f100000|100%| O|  |TAMS 0x8f100000, 0x8f000000| Untracked 
+|  37|0x8f100000, 0x8f200000, 0x8f200000|100%| O|  |TAMS 0x8f200000, 0x8f100000| Untracked 
+|  38|0x8f200000, 0x8f300000, 0x8f300000|100%| O|  |TAMS 0x8f300000, 0x8f200000| Untracked 
+|  39|0x8f300000, 0x8f400000, 0x8f400000|100%| O|  |TAMS 0x8f400000, 0x8f300000| Untracked 
+|  40|0x8f400000, 0x8f500000, 0x8f500000|100%| O|  |TAMS 0x8f500000, 0x8f400000| Untracked 
+|  41|0x8f500000, 0x8f600000, 0x8f600000|100%|HS|  |TAMS 0x8f600000, 0x8f500000| Complete 
+|  42|0x8f600000, 0x8f700000, 0x8f700000|100%|HC|  |TAMS 0x8f700000, 0x8f600000| Complete 
+|  43|0x8f700000, 0x8f800000, 0x8f800000|100%| O|  |TAMS 0x8f800000, 0x8f700000| Untracked 
+|  44|0x8f800000, 0x8f900000, 0x8f900000|100%| O|  |TAMS 0x8f900000, 0x8f800000| Untracked 
+|  45|0x8f900000, 0x8fa00000, 0x8fa00000|100%| O|  |TAMS 0x8fa00000, 0x8f900000| Untracked 
+|  46|0x8fa00000, 0x8fb00000, 0x8fb00000|100%| O|  |TAMS 0x8fb00000, 0x8fa00000| Untracked 
+|  47|0x8fb00000, 0x8fc00000, 0x8fc00000|100%| O|  |TAMS 0x8fc00000, 0x8fb00000| Untracked 
+|  48|0x8fc00000, 0x8fd00000, 0x8fd00000|100%| O|  |TAMS 0x8fd00000, 0x8fc00000| Untracked 
+|  49|0x8fd00000, 0x8fe00000, 0x8fe00000|100%| O|  |TAMS 0x8fe00000, 0x8fd00000| Untracked 
+|  50|0x8fe00000, 0x8ff00000, 0x8ff00000|100%| O|  |TAMS 0x8ff00000, 0x8fe00000| Untracked 
+|  51|0x8ff00000, 0x90000000, 0x90000000|100%| O|  |TAMS 0x90000000, 0x8ff00000| Untracked 
+|  52|0x90000000, 0x90100000, 0x90100000|100%| O|  |TAMS 0x90100000, 0x90000000| Untracked 
+|  53|0x90100000, 0x90200000, 0x90200000|100%| O|  |TAMS 0x90200000, 0x90100000| Untracked 
+|  54|0x90200000, 0x90300000, 0x90300000|100%| O|  |TAMS 0x90300000, 0x90200000| Untracked 
+|  55|0x90300000, 0x90400000, 0x90400000|100%| O|  |TAMS 0x90400000, 0x90300000| Untracked 
+|  56|0x90400000, 0x90500000, 0x90500000|100%| O|  |TAMS 0x90500000, 0x90400000| Untracked 
+|  57|0x90500000, 0x90600000, 0x90600000|100%| O|  |TAMS 0x90600000, 0x90500000| Untracked 
+|  58|0x90600000, 0x90700000, 0x90700000|100%| O|  |TAMS 0x90700000, 0x90600000| Untracked 
+|  59|0x90700000, 0x90800000, 0x90800000|100%| O|  |TAMS 0x90800000, 0x90700000| Untracked 
+|  60|0x90800000, 0x90900000, 0x90900000|100%| O|  |TAMS 0x90900000, 0x90800000| Untracked 
+|  61|0x90900000, 0x90a00000, 0x90a00000|100%| O|  |TAMS 0x90a00000, 0x90900000| Untracked 
+|  62|0x90a00000, 0x90b00000, 0x90b00000|100%| O|  |TAMS 0x90b00000, 0x90a00000| Untracked 
+|  63|0x90b00000, 0x90c00000, 0x90c00000|100%| O|  |TAMS 0x90c00000, 0x90b00000| Untracked 
+|  64|0x90c00000, 0x90d00000, 0x90d00000|100%| O|  |TAMS 0x90d00000, 0x90c00000| Untracked 
+|  65|0x90d00000, 0x90e00000, 0x90e00000|100%|HS|  |TAMS 0x90e00000, 0x90d00000| Complete 
+|  66|0x90e00000, 0x90f00000, 0x90f00000|100%|HC|  |TAMS 0x90f00000, 0x90e00000| Complete 
+|  67|0x90f00000, 0x91000000, 0x91000000|100%|HC|  |TAMS 0x91000000, 0x90f00000| Complete 
+|  68|0x91000000, 0x91100000, 0x91100000|100%| O|  |TAMS 0x91100000, 0x91000000| Untracked 
+|  69|0x91100000, 0x91200000, 0x91200000|100%| O|  |TAMS 0x91200000, 0x91100000| Untracked 
+|  70|0x91200000, 0x91300000, 0x91300000|100%| O|  |TAMS 0x91300000, 0x91200000| Untracked 
+|  71|0x91300000, 0x91400000, 0x91400000|100%| O|  |TAMS 0x91400000, 0x91300000| Untracked 
+|  72|0x91400000, 0x91500000, 0x91500000|100%| O|  |TAMS 0x91500000, 0x91400000| Untracked 
+|  73|0x91500000, 0x91600000, 0x91600000|100%| O|  |TAMS 0x91565000, 0x91500000| Untracked 
+|  74|0x91600000, 0x91700000, 0x91700000|100%| O|  |TAMS 0x91600000, 0x91600000| Untracked 
+|  75|0x91700000, 0x91800000, 0x91800000|100%| O|  |TAMS 0x91700000, 0x91700000| Untracked 
+|  76|0x91800000, 0x91900000, 0x91900000|100%| O|  |TAMS 0x91800000, 0x91800000| Untracked 
+|  77|0x91900000, 0x91a00000, 0x91a00000|100%| O|  |TAMS 0x91900000, 0x91900000| Untracked 
+|  78|0x91a00000, 0x91b00000, 0x91b00000|100%| O|  |TAMS 0x91a00000, 0x91a00000| Untracked 
+|  79|0x91b00000, 0x91c00000, 0x91c00000|100%| O|  |TAMS 0x91b00000, 0x91b00000| Untracked 
+|  80|0x91c00000, 0x91d00000, 0x91d00000|100%| O|  |TAMS 0x91c00000, 0x91c00000| Untracked 
+|  81|0x91d00000, 0x91e00000, 0x91e00000|100%| O|  |TAMS 0x91d00000, 0x91d00000| Untracked 
+|  82|0x91e00000, 0x91f00000, 0x91f00000|100%| O|  |TAMS 0x91e00000, 0x91e00000| Untracked 
+|  83|0x91f00000, 0x92000000, 0x92000000|100%| O|  |TAMS 0x91f00000, 0x91f00000| Untracked 
+|  84|0x92000000, 0x92100000, 0x92100000|100%| O|  |TAMS 0x92000000, 0x92000000| Untracked 
+|  85|0x92100000, 0x92200000, 0x92200000|100%| O|  |TAMS 0x92100000, 0x92100000| Untracked 
+|  86|0x92200000, 0x92300000, 0x92300000|100%| O|  |TAMS 0x92200000, 0x92200000| Untracked 
+|  87|0x92300000, 0x92400000, 0x92400000|100%| O|  |TAMS 0x92300000, 0x92300000| Untracked 
+|  88|0x92400000, 0x92500000, 0x92500000|100%| O|  |TAMS 0x92400000, 0x92400000| Untracked 
+|  89|0x92500000, 0x92600000, 0x92600000|100%| O|  |TAMS 0x92500000, 0x92500000| Untracked 
+|  90|0x92600000, 0x92700000, 0x92700000|100%| O|  |TAMS 0x92600000, 0x92600000| Untracked 
+|  91|0x92700000, 0x92800000, 0x92800000|100%| O|  |TAMS 0x92700000, 0x92700000| Untracked 
+|  92|0x92800000, 0x92900000, 0x92900000|100%| O|  |TAMS 0x92800000, 0x92800000| Untracked 
+|  93|0x92900000, 0x92a00000, 0x92a00000|100%| O|  |TAMS 0x92900000, 0x92900000| Untracked 
+|  94|0x92a00000, 0x92b00000, 0x92b00000|100%| O|  |TAMS 0x92a00000, 0x92a00000| Untracked 
+|  95|0x92b00000, 0x92c00000, 0x92c00000|100%| O|  |TAMS 0x92b00000, 0x92b00000| Untracked 
+|  96|0x92c00000, 0x92d00000, 0x92d00000|100%| O|  |TAMS 0x92c00000, 0x92c00000| Untracked 
+|  97|0x92d00000, 0x92e00000, 0x92e00000|100%| O|  |TAMS 0x92d00000, 0x92d00000| Untracked 
+|  98|0x92e00000, 0x92f00000, 0x92f00000|100%| O|  |TAMS 0x92e00000, 0x92e00000| Untracked 
+|  99|0x92f00000, 0x93000000, 0x93000000|100%| O|  |TAMS 0x92f00000, 0x92f00000| Untracked 
+| 100|0x93000000, 0x93100000, 0x93100000|100%| O|  |TAMS 0x93000000, 0x93000000| Untracked 
+| 101|0x93100000, 0x93200000, 0x93200000|100%| O|  |TAMS 0x93100000, 0x93100000| Untracked 
+| 102|0x93200000, 0x93300000, 0x93300000|100%| O|  |TAMS 0x93200000, 0x93200000| Untracked 
+| 103|0x93300000, 0x93400000, 0x93400000|100%| O|  |TAMS 0x93300000, 0x93300000| Untracked 
+| 104|0x93400000, 0x93500000, 0x93500000|100%| O|  |TAMS 0x93400000, 0x93400000| Untracked 
+| 105|0x93500000, 0x93600000, 0x93600000|100%| O|  |TAMS 0x93500000, 0x93500000| Untracked 
+| 106|0x93600000, 0x93700000, 0x93700000|100%| O|  |TAMS 0x93600000, 0x93600000| Untracked 
+| 107|0x93700000, 0x93800000, 0x93800000|100%| O|  |TAMS 0x93700000, 0x93700000| Untracked 
+| 108|0x93800000, 0x93900000, 0x93900000|100%| O|  |TAMS 0x93800000, 0x93800000| Untracked 
+| 109|0x93900000, 0x93a00000, 0x93a00000|100%| O|  |TAMS 0x93900000, 0x93900000| Untracked 
+| 110|0x93a00000, 0x93b00000, 0x93b00000|100%| O|  |TAMS 0x93a00000, 0x93a00000| Untracked 
+| 111|0x93b00000, 0x93c00000, 0x93c00000|100%| O|  |TAMS 0x93b00000, 0x93b00000| Untracked 
+| 112|0x93c00000, 0x93d00000, 0x93d00000|100%| O|  |TAMS 0x93c00000, 0x93c00000| Untracked 
+| 113|0x93d00000, 0x93e00000, 0x93e00000|100%| O|  |TAMS 0x93d00000, 0x93d00000| Untracked 
+| 114|0x93e00000, 0x93e00000, 0x93f00000|  0%| F|  |TAMS 0x93e00000, 0x93e00000| Untracked 
+| 115|0x93f00000, 0x93f00000, 0x94000000|  0%| F|  |TAMS 0x93f00000, 0x93f00000| Untracked 
+| 116|0x94000000, 0x94000000, 0x94100000|  0%| F|  |TAMS 0x94000000, 0x94000000| Untracked 
+| 117|0x94100000, 0x94100000, 0x94200000|  0%| F|  |TAMS 0x94100000, 0x94100000| Untracked 
+| 118|0x94200000, 0x94200000, 0x94300000|  0%| F|  |TAMS 0x94200000, 0x94200000| Untracked 
+| 119|0x94300000, 0x94300000, 0x94400000|  0%| F|  |TAMS 0x94300000, 0x94300000| Untracked 
+| 120|0x94400000, 0x94400000, 0x94500000|  0%| F|  |TAMS 0x94400000, 0x94400000| Untracked 
+| 121|0x94500000, 0x94500000, 0x94600000|  0%| F|  |TAMS 0x94500000, 0x94500000| Untracked 
+| 122|0x94600000, 0x94600000, 0x94700000|  0%| F|  |TAMS 0x94600000, 0x94600000| Untracked 
+| 123|0x94700000, 0x94700000, 0x94800000|  0%| F|  |TAMS 0x94700000, 0x94700000| Untracked 
+| 124|0x94800000, 0x94800000, 0x94900000|  0%| F|  |TAMS 0x94800000, 0x94800000| Untracked 
+| 125|0x94900000, 0x94900000, 0x94a00000|  0%| F|  |TAMS 0x94900000, 0x94900000| Untracked 
+| 126|0x94a00000, 0x94a00000, 0x94b00000|  0%| F|  |TAMS 0x94a00000, 0x94a00000| Untracked 
+| 127|0x94b00000, 0x94b00000, 0x94c00000|  0%| F|  |TAMS 0x94b00000, 0x94b00000| Untracked 
+| 128|0x94c00000, 0x94c00000, 0x94d00000|  0%| F|  |TAMS 0x94c00000, 0x94c00000| Untracked 
+| 129|0x94d00000, 0x94d00000, 0x94e00000|  0%| F|  |TAMS 0x94d00000, 0x94d00000| Untracked 
+| 130|0x94e00000, 0x94e00000, 0x94f00000|  0%| F|  |TAMS 0x94e00000, 0x94e00000| Untracked 
+| 131|0x94f00000, 0x94f00000, 0x95000000|  0%| F|  |TAMS 0x94f00000, 0x94f00000| Untracked 
+| 132|0x95000000, 0x95000000, 0x95100000|  0%| F|  |TAMS 0x95000000, 0x95000000| Untracked 
+| 133|0x95100000, 0x95100000, 0x95200000|  0%| F|  |TAMS 0x95100000, 0x95100000| Untracked 
+| 134|0x95200000, 0x95200000, 0x95300000|  0%| F|  |TAMS 0x95200000, 0x95200000| Untracked 
+| 135|0x95300000, 0x95300000, 0x95400000|  0%| F|  |TAMS 0x95300000, 0x95300000| Untracked 
+| 136|0x95400000, 0x95400000, 0x95500000|  0%| F|  |TAMS 0x95400000, 0x95400000| Untracked 
+| 137|0x95500000, 0x95500000, 0x95600000|  0%| F|  |TAMS 0x95500000, 0x95500000| Untracked 
+| 138|0x95600000, 0x95600000, 0x95700000|  0%| F|  |TAMS 0x95600000, 0x95600000| Untracked 
+| 139|0x95700000, 0x95700000, 0x95800000|  0%| F|  |TAMS 0x95700000, 0x95700000| Untracked 
+| 140|0x95800000, 0x95800000, 0x95900000|  0%| F|  |TAMS 0x95800000, 0x95800000| Untracked 
+| 141|0x95900000, 0x95900000, 0x95a00000|  0%| F|  |TAMS 0x95900000, 0x95900000| Untracked 
+| 142|0x95a00000, 0x95a13ad8, 0x95b00000|  7%| S|CS|TAMS 0x95a00000, 0x95a00000| Complete 
+| 143|0x95b00000, 0x95b00000, 0x95c00000|  0%| F|  |TAMS 0x95b00000, 0x95b00000| Untracked 
+| 144|0x95c00000, 0x95c00000, 0x95d00000|  0%| F|  |TAMS 0x95c00000, 0x95c00000| Untracked 
+| 145|0x95d00000, 0x95e00000, 0x95e00000|100%| E|  |TAMS 0x95d00000, 0x95d00000| Complete 
+| 146|0x95e00000, 0x95f00000, 0x95f00000|100%| E|CS|TAMS 0x95e00000, 0x95e00000| Complete 
+| 147|0x95f00000, 0x96000000, 0x96000000|100%| E|CS|TAMS 0x95f00000, 0x95f00000| Complete 
+| 148|0x96000000, 0x96100000, 0x96100000|100%| E|CS|TAMS 0x96000000, 0x96000000| Complete 
+| 149|0x96100000, 0x96200000, 0x96200000|100%| E|CS|TAMS 0x96100000, 0x96100000| Complete 
+| 150|0x96200000, 0x96300000, 0x96300000|100%| E|CS|TAMS 0x96200000, 0x96200000| Complete 
+| 151|0x96300000, 0x96400000, 0x96400000|100%| E|CS|TAMS 0x96300000, 0x96300000| Complete 
+| 152|0x96400000, 0x96500000, 0x96500000|100%| E|CS|TAMS 0x96400000, 0x96400000| Complete 
+| 153|0x96500000, 0x96600000, 0x96600000|100%| E|CS|TAMS 0x96500000, 0x96500000| Complete 
+| 154|0x96600000, 0x96700000, 0x96700000|100%| E|CS|TAMS 0x96600000, 0x96600000| Complete 
+| 155|0x96700000, 0x96800000, 0x96800000|100%| E|CS|TAMS 0x96700000, 0x96700000| Complete 
+| 156|0x96800000, 0x96900000, 0x96900000|100%| E|CS|TAMS 0x96800000, 0x96800000| Complete 
+| 157|0x96900000, 0x96a00000, 0x96a00000|100%| E|CS|TAMS 0x96900000, 0x96900000| Complete 
+| 158|0x96a00000, 0x96b00000, 0x96b00000|100%| E|CS|TAMS 0x96a00000, 0x96a00000| Complete 
+| 159|0x96b00000, 0x96c00000, 0x96c00000|100%| E|CS|TAMS 0x96b00000, 0x96b00000| Complete 
+| 160|0x96c00000, 0x96d00000, 0x96d00000|100%| E|CS|TAMS 0x96c00000, 0x96c00000| Complete 
+| 161|0x96d00000, 0x96e00000, 0x96e00000|100%| E|CS|TAMS 0x96d00000, 0x96d00000| Complete 
+| 162|0x96e00000, 0x96f00000, 0x96f00000|100%| E|CS|TAMS 0x96e00000, 0x96e00000| Complete 
+| 163|0x96f00000, 0x97000000, 0x97000000|100%| E|CS|TAMS 0x96f00000, 0x96f00000| Complete 
+| 164|0x97000000, 0x97100000, 0x97100000|100%| E|CS|TAMS 0x97000000, 0x97000000| Complete 
+| 165|0x97100000, 0x97200000, 0x97200000|100%| E|CS|TAMS 0x97100000, 0x97100000| Complete 
+| 166|0x97200000, 0x97300000, 0x97300000|100%| E|CS|TAMS 0x97200000, 0x97200000| Complete 
+| 167|0x97300000, 0x97400000, 0x97400000|100%| E|CS|TAMS 0x97300000, 0x97300000| Complete 
+| 168|0x97400000, 0x97500000, 0x97500000|100%| E|CS|TAMS 0x97400000, 0x97400000| Complete 
+| 169|0x97500000, 0x97600000, 0x97600000|100%| E|CS|TAMS 0x97500000, 0x97500000| Complete 
+| 170|0x97600000, 0x97700000, 0x97700000|100%| E|CS|TAMS 0x97600000, 0x97600000| Complete 
+| 171|0x97700000, 0x97800000, 0x97800000|100%| E|CS|TAMS 0x97700000, 0x97700000| Complete 
+| 172|0x97800000, 0x97900000, 0x97900000|100%| E|CS|TAMS 0x97800000, 0x97800000| Complete 
+| 173|0x97900000, 0x97a00000, 0x97a00000|100%| E|CS|TAMS 0x97900000, 0x97900000| Complete 
+| 174|0x97a00000, 0x97b00000, 0x97b00000|100%| E|CS|TAMS 0x97a00000, 0x97a00000| Complete 
+
+Card table byte_map: [0x8ca0c000,0x8cb06000] _byte_map_base: 0x8c5a6000
+
+Marking Bits (Prev, Next): (CMBitMap*) 0xae46d664, (CMBitMap*) 0xae46d680
+ Prev Bits: [0x8c142000, 0x8c912000)
+ Next Bits: [0x8b972000, 0x8c142000)
+
+Polling page: 0xaf0e5000
+
+Metaspace:
+
+Usage:
+   46.73 MB capacity,    45.47 MB ( 97%) used,   855.29 KB (  2%) free+waste,   427.93 KB ( <1%) overhead. 
+
+Virtual space:
+     47.30 MB reserved,      46.84 MB (>99%) committed 
+
+Chunk freelists:
+1.50 KB
+
+MaxMetaspaceSize: unlimited
+
+
+CodeCache: size=32768Kb used=6237Kb max_used=6248Kb free=26531Kb
+ bounds [0xac27c000, 0xac89c000, 0xae27c000]
+ total_blobs=3000 nmethods=2515 adapters=436
+ compilation: enabled
+              stopped_count=0, restarted_count=0
+ full_count=0
+
+Compilation events (20 events):
+Event: 622.401 Thread 0x8ac35000 2508             java.security.MessageDigest::isEqual (100 bytes)
+Event: 622.544 Thread 0x8ac35000 nmethod 2508 0xac891808 code [0xac891910, 0xac891c2c]
+Event: 2548.105 Thread 0x8ac35000 2509             sun.awt.SunToolkit::awtLock (7 bytes)
+Event: 2548.800 Thread 0x8ac35000 nmethod 2509 0xac893888 code [0xac8939a0, 0xac893bc0]
+Event: 2548.808 Thread 0x8ac35000 2510             sun.awt.SunToolkit::awtUnlock (7 bytes)
+Event: 2548.893 Thread 0x8ac35000 nmethod 2510 0xac893d88 code [0xac893ea0, 0xac8940a8]
+Event: 2571.581 Thread 0x8ac35000 2511             sun.awt.X11.XToolkit::getDisplay (20 bytes)
+Event: 2571.588 Thread 0x8ac35000 nmethod 2511 0xac891e88 code [0xac891f80, 0xac891fcc]
+Event: 4575.501 Thread 0x8ac35000 2513             sun.util.logging.internal.LoggingProviderImpl$JULWrapper::toJUL (40 bytes)
+Event: 4576.374 Thread 0x8ac35000 nmethod 2513 0xac889988 code [0xac889a80, 0xac889afc]
+Event: 4662.605 Thread 0x8ac35000 2514   !         jdk.internal.logger.LazyLoggers$LazyLoggerAccessor::platform (103 bytes)
+Event: 4662.624 Thread 0x8ac35000 nmethod 2514 0xac889788 code [0xac889880, 0xac8898fc]
+Event: 4664.111 Thread 0x8ac35000 2515             jdk.internal.logger.LazyLoggers$LazyLoggerWrapper::platformProxy (10 bytes)
+Event: 4664.134 Thread 0x8ac35000 nmethod 2515 0xac889508 code [0xac889600, 0xac8896ac]
+Event: 5042.126 Thread 0x8ac35000 2516             sun.util.logging.PlatformLogger::isLoggable (23 bytes)
+Event: 5042.324 Thread 0x8ac35000 nmethod 2516 0xac889008 code [0xac889120, 0xac8892bc]
+Event: 5213.089 Thread 0x8ac35000 2517   !         sun.awt.X11.XToolkit::callTimeoutTasks (220 bytes)
+Event: 5213.195 Thread 0x8ac35000 nmethod 2517 0xac888b08 code [0xac888c30, 0xac888dac]
+Event: 5235.642 Thread 0x8ac35000 2518   !         sun.awt.X11.XToolkit::getNextTaskTime (55 bytes)
+Event: 5235.892 Thread 0x8ac35000 nmethod 2518 0xac894d88 code [0xac894ec0, 0xac8952bc]
+
+GC Heap History (20 events):
+Event: 91.328 GC heap before
+{Heap before GC invocations=139 (full 0):
+ garbage-first heap   total 179200K, used 149504K [0x8cc00000, 0xac000000)
+  region size 1024K, 44 young (45056K), 6 survivors (6144K)
+ Metaspace       used 45992K, capacity 47207K, committed 47320K, reserved 47408K
+}
+Event: 91.366 GC heap after
+{Heap after GC invocations=140 (full 0):
+ garbage-first heap   total 179200K, used 117979K [0x8cc00000, 0xac000000)
+  region size 1024K, 6 young (6144K), 6 survivors (6144K)
+ Metaspace       used 45992K, capacity 47207K, committed 47320K, reserved 47408K
+}
+Event: 137.303 GC heap before
+{Heap before GC invocations=140 (full 0):
+ garbage-first heap   total 179200K, used 146651K [0x8cc00000, 0xac000000)
+  region size 1024K, 35 young (35840K), 6 survivors (6144K)
+ Metaspace       used 46541K, capacity 47841K, committed 47960K, reserved 48432K
+}
+Event: 137.330 GC heap after
+{Heap after GC invocations=141 (full 0):
+ garbage-first heap   total 179200K, used 118286K [0x8cc00000, 0xac000000)
+  region size 1024K, 3 young (3072K), 3 survivors (3072K)
+ Metaspace       used 46541K, capacity 47841K, committed 47960K, reserved 48432K
+}
+Event: 622.277 GC heap before
+{Heap before GC invocations=141 (full 0):
+ garbage-first heap   total 179200K, used 147982K [0x8cc00000, 0xac000000)
+  region size 1024K, 32 young (32768K), 3 survivors (3072K)
+ Metaspace       used 46558K, capacity 47848K, committed 47960K, reserved 48432K
+}
+Event: 622.370 GC heap after
+{Heap after GC invocations=142 (full 0):
+ garbage-first heap   total 179200K, used 117052K [0x8cc00000, 0xac000000)
+  region size 1024K, 1 young (1024K), 1 survivors (1024K)
+ Metaspace       used 46558K, capacity 47848K, committed 47960K, reserved 48432K
+}
+Event: 1242.996 GC heap before
+{Heap before GC invocations=142 (full 0):
+ garbage-first heap   total 179200K, used 148796K [0x8cc00000, 0xac000000)
+  region size 1024K, 32 young (32768K), 1 survivors (1024K)
+ Metaspace       used 46560K, capacity 47848K, committed 47960K, reserved 48432K
+}
+Event: 1243.276 GC heap after
+{Heap after GC invocations=143 (full 0):
+ garbage-first heap   total 179200K, used 116870K [0x8cc00000, 0xac000000)
+  region size 1024K, 1 young (1024K), 1 survivors (1024K)
+ Metaspace       used 46560K, capacity 47848K, committed 47960K, reserved 48432K
+}
+Event: 1903.848 GC heap before
+{Heap before GC invocations=143 (full 0):
+ garbage-first heap   total 179200K, used 150662K [0x8cc00000, 0xac000000)
+  region size 1024K, 34 young (34816K), 1 survivors (1024K)
+ Metaspace       used 46565K, capacity 47848K, committed 47960K, reserved 48432K
+}
+Event: 1904.002 GC heap after
+{Heap after GC invocations=144 (full 0):
+ garbage-first heap   total 179200K, used 116817K [0x8cc00000, 0xac000000)
+  region size 1024K, 1 young (1024K), 1 survivors (1024K)
+ Metaspace       used 46565K, capacity 47848K, committed 47960K, reserved 48432K
+}
+Event: 2605.786 GC heap before
+{Heap before GC invocations=144 (full 0):
+ garbage-first heap   total 179200K, used 151633K [0x8cc00000, 0xac000000)
+  region size 1024K, 35 young (35840K), 1 survivors (1024K)
+ Metaspace       used 46565K, capacity 47848K, committed 47960K, reserved 48432K
+}
+Event: 2605.827 GC heap after
+{Heap after GC invocations=145 (full 0):
+ garbage-first heap   total 179200K, used 116819K [0x8cc00000, 0xac000000)
+  region size 1024K, 1 young (1024K), 1 survivors (1024K)
+ Metaspace       used 46565K, capacity 47848K, committed 47960K, reserved 48432K
+}
+Event: 3330.799 GC heap before
+{Heap before GC invocations=145 (full 0):
+ garbage-first heap   total 179200K, used 152659K [0x8cc00000, 0xac000000)
+  region size 1024K, 36 young (36864K), 1 survivors (1024K)
+ Metaspace       used 46565K, capacity 47848K, committed 47960K, reserved 48432K
+}
+Event: 3331.122 GC heap after
+{Heap after GC invocations=146 (full 0):
+ garbage-first heap   total 179200K, used 116814K [0x8cc00000, 0xac000000)
+  region size 1024K, 1 young (1024K), 1 survivors (1024K)
+ Metaspace       used 46565K, capacity 47848K, committed 47960K, reserved 48432K
+}
+Event: 3652.301 GC heap before
+{Heap before GC invocations=146 (full 0):
+ garbage-first heap   total 179200K, used 133198K [0x8cc00000, 0xac000000)
+  region size 1024K, 17 young (17408K), 1 survivors (1024K)
+ Metaspace       used 46565K, capacity 47848K, committed 47960K, reserved 48432K
+}
+Event: 3652.342 GC heap after
+{Heap after GC invocations=147 (full 0):
+ garbage-first heap   total 179200K, used 116816K [0x8cc00000, 0xac000000)
+  region size 1024K, 1 young (1024K), 1 survivors (1024K)
+ Metaspace       used 46565K, capacity 47848K, committed 47960K, reserved 48432K
+}
+Event: 4140.975 GC heap before
+{Heap before GC invocations=147 (full 0):
+ garbage-first heap   total 179200K, used 142416K [0x8cc00000, 0xac000000)
+  region size 1024K, 26 young (26624K), 1 survivors (1024K)
+ Metaspace       used 46565K, capacity 47848K, committed 47960K, reserved 48432K
+}
+Event: 4141.020 GC heap after
+{Heap after GC invocations=148 (full 0):
+ garbage-first heap   total 179200K, used 116814K [0x8cc00000, 0xac000000)
+  region size 1024K, 1 young (1024K), 1 survivors (1024K)
+ Metaspace       used 46565K, capacity 47848K, committed 47960K, reserved 48432K
+}
+Event: 4717.625 GC heap before
+{Heap before GC invocations=148 (full 0):
+ garbage-first heap   total 179200K, used 148558K [0x8cc00000, 0xac000000)
+  region size 1024K, 32 young (32768K), 1 survivors (1024K)
+ Metaspace       used 46565K, capacity 47848K, committed 47960K, reserved 48432K
+}
+Event: 4717.798 GC heap after
+{Heap after GC invocations=149 (full 0):
+ garbage-first heap   total 179200K, used 116814K [0x8cc00000, 0xac000000)
+  region size 1024K, 1 young (1024K), 1 survivors (1024K)
+ Metaspace       used 46565K, capacity 47848K, committed 47960K, reserved 48432K
+}
+
+Deoptimization events (20 events):
+Event: 130.983 Thread 0x0f18f000 Uncommon trap: trap_request=0xffffffde fr.pc=0xac67a9b4 relative=0x00000204
+Event: 130.984 Thread 0x0f18f000 Uncommon trap: reason=class_check action=maybe_recompile pc=0xac67a9b4 method=java.util.Collections$UnmodifiableMap.get(Ljava/lang/Object;)Ljava/lang/Object; @ 5 c2
+Event: 130.984 Thread 0x0f18f000 DEOPT PACKING pc=0xac67a9b4 sp=0x80c74cd8
+Event: 130.984 Thread 0x0f18f000 DEOPT UNPACKING pc=0xac291604 sp=0x80c74cbc mode 2
+Event: 135.874 Thread 0x72d5d400 Uncommon trap: trap_request=0xffffffbe fr.pc=0xac7ffd10 relative=0x00000ad0
+Event: 135.874 Thread 0x72d5d400 Uncommon trap: reason=profile_predicate action=maybe_recompile pc=0xac7ffd10 method=sun.security.util.math.IntegerModuloP.pow(Ljava/math/BigInteger;)Lsun/security/util/math/ImmutableIntegerModuloP; @ 37 c2
+Event: 135.874 Thread 0x72d5d400 DEOPT PACKING pc=0xac7ffd10 sp=0x7d3a51b8
+Event: 135.874 Thread 0x72d5d400 DEOPT UNPACKING pc=0xac291604 sp=0x7d3a51c4 mode 2
+Event: 135.900 Thread 0x72d5d400 Uncommon trap: trap_request=0xffffffbe fr.pc=0xac7ffd10 relative=0x00000ad0
+Event: 135.900 Thread 0x72d5d400 Uncommon trap: reason=profile_predicate action=maybe_recompile pc=0xac7ffd10 method=sun.security.util.math.IntegerModuloP.pow(Ljava/math/BigInteger;)Lsun/security/util/math/ImmutableIntegerModuloP; @ 37 c2
+Event: 135.900 Thread 0x72d5d400 DEOPT PACKING pc=0xac7ffd10 sp=0x7d3a51c0
+Event: 135.900 Thread 0x72d5d400 DEOPT UNPACKING pc=0xac291604 sp=0x7d3a51cc mode 2
+Event: 138.063 Thread 0x72d5d400 Uncommon trap: trap_request=0xffffffbe fr.pc=0xac7ffd10 relative=0x00000ad0
+Event: 138.063 Thread 0x72d5d400 Uncommon trap: reason=profile_predicate action=maybe_recompile pc=0xac7ffd10 method=sun.security.util.math.IntegerModuloP.pow(Ljava/math/BigInteger;)Lsun/security/util/math/ImmutableIntegerModuloP; @ 37 c2
+Event: 138.063 Thread 0x72d5d400 DEOPT PACKING pc=0xac7ffd10 sp=0x7d3a51b8
+Event: 138.063 Thread 0x72d5d400 DEOPT UNPACKING pc=0xac291604 sp=0x7d3a51c4 mode 2
+Event: 138.097 Thread 0x72d5d400 Uncommon trap: trap_request=0xffffffbe fr.pc=0xac7ffd10 relative=0x00000ad0
+Event: 138.097 Thread 0x72d5d400 Uncommon trap: reason=profile_predicate action=maybe_recompile pc=0xac7ffd10 method=sun.security.util.math.IntegerModuloP.pow(Ljava/math/BigInteger;)Lsun/security/util/math/ImmutableIntegerModuloP; @ 37 c2
+Event: 138.097 Thread 0x72d5d400 DEOPT PACKING pc=0xac7ffd10 sp=0x7d3a51c0
+Event: 138.097 Thread 0x72d5d400 DEOPT UNPACKING pc=0xac291604 sp=0x7d3a51cc mode 2
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (20 events):
+Event: 90.933 Thread 0x7e1b0000 Exception <a 'java/security/PrivilegedActionException'{0x9665e020}> (0x9665e020) thrown at [src/hotspot/share/prims/jvm.cpp, line 1306]
+Event: 90.933 Thread 0x7e1b0000 Exception <a 'java/security/PrivilegedActionException'{0x9665e488}> (0x9665e488) thrown at [src/hotspot/share/prims/jvm.cpp, line 1306]
+Event: 91.149 Thread 0x7e1b0000 Exception <a 'sun/nio/fs/UnixException'{0x95e93c58}> (0x95e93c58) thrown at [src/hotspot/share/prims/jni.cpp, line 615]
+Event: 91.628 Thread 0x0f18f000 Exception <a 'java/security/PrivilegedActionException'{0x97421a18}> (0x97421a18) thrown at [src/hotspot/share/prims/jvm.cpp, line 1306]
+Event: 91.628 Thread 0x0f18f000 Exception <a 'java/security/PrivilegedActionException'{0x97421c60}> (0x97421c60) thrown at [src/hotspot/share/prims/jvm.cpp, line 1306]
+Event: 93.577 Thread 0x0f18f000 Implicit null exception at 0xac7b3c24 to 0xac7b8ef8
+Event: 94.993 Thread 0x0f18f000 Implicit null exception at 0xac7c0660 to 0xac7c44c4
+Event: 94.994 Thread 0x0f18f000 Implicit null exception at 0xac609e38 to 0xac60bad0
+Event: 94.994 Thread 0x0f18f000 Implicit null exception at 0xac7e9948 to 0xac7ec0b8
+Event: 94.997 Thread 0x0f18f000 Implicit null exception at 0xac519c9c to 0xac51b924
+Event: 95.040 Thread 0x0f18f000 Implicit null exception at 0xac7caf1c to 0xac7cd6a0
+Event: 95.246 Thread 0x0f18f000 Implicit null exception at 0xac7dcc38 to 0xac7e13cc
+Event: 96.173 Thread 0x0f18f000 Implicit null exception at 0xac55480c to 0xac5570e8
+Event: 96.176 Thread 0x0f18f000 Implicit null exception at 0xac8145fc to 0xac817800
+Event: 98.006 Thread 0x0f18f000 Exception <a 'java/io/FileNotFoundException'{0x96e2ad90}> (0x96e2ad90) thrown at [src/hotspot/share/prims/jni.cpp, line 615]
+Event: 98.052 Thread 0x0f18f000 Exception <a 'java/io/FileNotFoundException'{0x96ec2648}> (0x96ec2648) thrown at [src/hotspot/share/prims/jni.cpp, line 615]
+Event: 129.422 Thread 0x0f18f000 Implicit null exception at 0xac6e283c to 0xac6e2ccc
+Event: 129.885 Thread 0x0f18f000 Implicit null exception at 0xac7eee44 to 0xac7ef178
+Event: 129.904 Thread 0x8b25e800 Exception <a 'java/lang/InterruptedException'{0x96100000}> (0x96100000) thrown at [src/hotspot/share/runtime/objectMonitor.cpp, line 1635]
+Event: 131.029 Thread 0x0f18f000 Exception <a 'java/lang/NullPointerException'{0x961731e8}> (0x961731e8) thrown at [src/hotspot/share/prims/jvm.cpp, line 1310]
+
+Events (20 events):
+Event: 2605.828 Protecting memory [0xaf0e5000,0xaf0e6000] with protection modes 1
+Event: 2605.829 Executing VM operation: G1CollectForAllocation done
+Event: 2609.056 Loaded shared library /usr/lib/jvm/java-11-openjdk-armhf/lib/libawt_xawt.so
+Event: 3330.553 Executing VM operation: G1CollectForAllocation
+Event: 3330.641 Protecting memory [0xaf0e5000,0xaf0e6000] with protection modes 0
+Event: 3331.122 Protecting memory [0xaf0e5000,0xaf0e6000] with protection modes 1
+Event: 3331.125 Executing VM operation: G1CollectForAllocation done
+Event: 3652.295 Executing VM operation: G1CollectForAllocation
+Event: 3652.295 Protecting memory [0xaf0e5000,0xaf0e6000] with protection modes 0
+Event: 3652.343 Protecting memory [0xaf0e5000,0xaf0e6000] with protection modes 1
+Event: 3652.344 Executing VM operation: G1CollectForAllocation done
+Event: 4140.966 Executing VM operation: G1CollectForAllocation
+Event: 4140.967 Protecting memory [0xaf0e5000,0xaf0e6000] with protection modes 0
+Event: 4141.024 Protecting memory [0xaf0e5000,0xaf0e6000] with protection modes 1
+Event: 4141.026 Executing VM operation: G1CollectForAllocation done
+Event: 4717.509 Executing VM operation: G1CollectForAllocation
+Event: 4717.520 Protecting memory [0xaf0e5000,0xaf0e6000] with protection modes 0
+Event: 4717.816 Protecting memory [0xaf0e5000,0xaf0e6000] with protection modes 1
+Event: 4717.819 Executing VM operation: G1CollectForAllocation done
+Event: 5237.878 Loaded shared library /usr/lib/jvm/java-11-openjdk-armhf/lib/libawt_xawt.so
+
+
+Dynamic libraries:
+0f000000-0f001000 r-xp 00000000 fd:01 253335     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/bin/java
+0f010000-0f011000 r--p 00000000 fd:01 253335     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/bin/java
+0f011000-0f012000 rw-p 00001000 fd:01 253335     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/bin/java
+0f012000-0f73b000 rw-p 00000000 00:00 0 
+10000000-10001000 r-xp 00000000 fd:01 191016     /data/data/com.termux/files/usr/libexec/proot/loader
+1f000000-1f018000 r-xp 00000000 fd:01 215511     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/ld-2.28.so
+1f028000-1f029000 r--p 00018000 fd:01 215511     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/ld-2.28.so
+1f029000-1f02a000 rw-p 00019000 fd:01 215511     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/ld-2.28.so
+724ff000-72500000 ---p 00000000 00:00 0 
+72500000-72d00000 rw-p 00000000 00:00 0 
+72d00000-72e6d000 rw-p 00000000 00:00 0 
+72e6d000-72f00000 ---p 00000000 00:00 0 
+72f00000-72fb1000 rw-p 00000000 00:00 0 
+72fb1000-73000000 ---p 00000000 00:00 0 
+73000000-73100000 rw-p 00000000 00:00 0 
+73100000-731ff000 rw-p 00000000 00:00 0 
+731ff000-73200000 ---p 00000000 00:00 0 
+73300000-733a0000 rw-p 00000000 00:00 0 
+733a0000-73400000 ---p 00000000 00:00 0 
+73400000-734fc000 rw-p 00000000 00:00 0 
+734fc000-73500000 ---p 00000000 00:00 0 
+73500000-735fb000 rw-p 00000000 00:00 0 
+735fb000-73600000 ---p 00000000 00:00 0 
+73600000-736e9000 rw-p 00000000 00:00 0 
+736e9000-73700000 ---p 00000000 00:00 0 
+737fa000-738fa000 rw-p 00000000 00:00 0 
+73900000-73a00000 rw-p 00000000 00:00 0 
+73a00000-73ad1000 rw-p 00000000 00:00 0 
+73ad1000-73b00000 ---p 00000000 00:00 0 
+73bf8000-73e00000 rw-p 00000000 00:00 0 
+73e00000-73ee5000 rw-p 00000000 00:00 0 
+73ee5000-73f00000 ---p 00000000 00:00 0 
+73ff8000-740f8000 rw-p 00000000 00:00 0 
+74100000-74200000 rw-p 00000000 00:00 0 
+74200000-742e8000 rw-p 00000000 00:00 0 
+742e8000-74300000 ---p 00000000 00:00 0 
+74300000-743fa000 rw-p 00000000 00:00 0 
+743fa000-74400000 ---p 00000000 00:00 0 
+74400000-744dd000 rw-p 00000000 00:00 0 
+744dd000-74500000 ---p 00000000 00:00 0 
+74500000-74600000 rw-p 00000000 00:00 0 
+74600000-74700000 rw-p 00000000 00:00 0 
+74700000-747e5000 rw-p 00000000 00:00 0 
+747e5000-74800000 ---p 00000000 00:00 0 
+74855000-74b00000 rw-p 00000000 00:00 0 
+74b00000-74bf9000 rw-p 00000000 00:00 0 
+74bf9000-74c00000 ---p 00000000 00:00 0 
+74c00000-74cfd000 rw-p 00000000 00:00 0 
+74cfd000-74d00000 ---p 00000000 00:00 0 
+74d00000-74df8000 rw-p 00000000 00:00 0 
+74df8000-74e00000 ---p 00000000 00:00 0 
+74efd000-74efe000 ---p 00000000 00:00 0 
+74efe000-756fe000 rw-p 00000000 00:00 0 
+756fe000-756ff000 ---p 00000000 00:00 0 
+756ff000-75eff000 rw-p 00000000 00:00 0 
+75eff000-75f00000 ---p 00000000 00:00 0 
+75f00000-76700000 rw-p 00000000 00:00 0 
+76700000-767fb000 rw-p 00000000 00:00 0 
+767fb000-76800000 ---p 00000000 00:00 0 
+76800000-76900000 rw-p 00000000 00:00 0 
+76900000-76a00000 rw-p 00000000 00:00 0 
+76a00000-76b00000 rw-p 00000000 00:00 0 
+76b00000-76c00000 rw-p 00000000 00:00 0 
+76c00000-76d00000 rw-p 00000000 00:00 0 
+76d00000-76dff000 rw-p 00000000 00:00 0 
+76dff000-76e00000 ---p 00000000 00:00 0 
+76e00000-76f00000 rw-p 00000000 00:00 0 
+76f00000-76ffe000 rw-p 00000000 00:00 0 
+76ffe000-77000000 ---p 00000000 00:00 0 
+77046000-770ff000 r--p 00000000 fd:01 231464     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf
+770ff000-77100000 ---p 00000000 00:00 0 
+77100000-77900000 rw-p 00000000 00:00 0 
+77900000-77a00000 rw-p 00000000 00:00 0 
+77a03000-77ab0000 r--p 00000000 fd:01 231463     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf
+77ab0000-77ab3000 ---p 00000000 00:00 0 
+77ab3000-77b00000 rw-p 00000000 00:00 0 
+77b00000-77c00000 rw-p 00000000 00:00 0 
+77c00000-77d00000 rw-p 00000000 00:00 0 
+77d00000-77e00000 rw-p 00000000 00:00 0 
+77e00000-77f00000 rw-p 00000000 00:00 0 
+77f00000-78000000 rw-p 00000000 00:00 0 
+78000000-78100000 rw-p 00000000 00:00 0 
+78100000-78103000 rw-p 00000000 00:00 0 
+78103000-781f0000 rw-p 00000000 00:00 0 
+781f0000-781fc000 rw-p 00000000 00:00 0 
+781fc000-781ff000 rw-p 00000000 00:00 0 
+781ff000-78200000 rw-p 00000000 00:00 0 
+78200000-78300000 rw-p 00000000 00:00 0 
+78300000-786e0000 ---p 00000000 00:00 0 
+786e0000-78708000 rw-p 00000000 00:00 0 
+78708000-787f0000 rw-p 00000000 00:00 0 
+787f0000-78800000 rw-p 00000000 00:00 0 
+78803000-78806000 ---p 00000000 00:00 0 
+78806000-78853000 rw-p 00000000 00:00 0 
+78853000-78900000 r--p 00000000 fd:01 231463     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf
+78900000-78904000 rw-p 00000000 00:00 0 
+78904000-789e4000 rw-p 00000000 00:00 0 
+789e4000-789ec000 rw-p 00000000 00:00 0 
+789ec000-789f0000 rw-p 00000000 00:00 0 
+789f0000-78a00000 rw-p 00000000 00:00 0 
+78a00000-78b00000 rw-p 00000000 00:00 0 
+78b00000-78b09000 rw-p 00000000 00:00 0 
+78b09000-78c00000 rw-p 00000000 00:00 0 
+78c03000-78c06000 ---p 00000000 00:00 0 
+78c06000-78c53000 rw-p 00000000 00:00 0 
+78c53000-78c56000 ---p 00000000 00:00 0 
+78c56000-78ca3000 rw-p 00000000 00:00 0 
+78ca3000-78d00000 r--p 00000000 fd:01 231489     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf
+78d00000-78d02000 rw-p 00000000 00:00 0 
+78d02000-78df6000 rw-p 00000000 00:00 0 
+78df6000-78e00000 rw-p 00000000 00:00 0 
+78e00000-78f00000 rw-p 00000000 00:00 0 
+78f00000-78f02000 rw-p 00000000 00:00 0 
+78f02000-78f85000 rw-p 00000000 00:00 0 
+78f85000-78f86000 rw-p 00000000 00:00 0 
+78f86000-78f87000 rw-p 00000000 00:00 0 
+78f87000-78f8b000 rw-p 00000000 00:00 0 
+78f8b000-78f8c000 rw-p 00000000 00:00 0 
+78f8c000-78f8e000 rw-p 00000000 00:00 0 
+78f8e000-78f91000 rw-p 00000000 00:00 0 
+78f91000-78f92000 rw-p 00000000 00:00 0 
+78f92000-78f93000 rw-p 00000000 00:00 0 
+78f93000-78f9b000 rw-p 00000000 00:00 0 
+78f9b000-78f9c000 rw-p 00000000 00:00 0 
+78f9c000-78f9f000 rw-p 00000000 00:00 0 
+78f9f000-78fa1000 rw-p 00000000 00:00 0 
+78fa1000-78fd4000 rw-p 00000000 00:00 0 
+78fd4000-78fd5000 rw-p 00000000 00:00 0 
+78fd5000-79000000 rw-p 00000000 00:00 0 
+7900d000-79011000 r-xp 00000000 fd:01 311724     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-png.so
+79011000-79020000 ---p 00004000 fd:01 311724     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-png.so
+79020000-79021000 r--p 00003000 fd:01 311724     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-png.so
+79021000-79022000 rw-p 00004000 fd:01 311724     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-png.so
+79022000-79043000 r--s 00000000 fd:01 233999     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/share/mime/mime.cache
+79043000-79044000 ---p 00000000 00:00 0 
+79044000-79844000 rw-p 00000000 00:00 0 
+79844000-7c7ce000 r-xp 00000000 fd:01 275139     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/jni/libjfxwebkit.so
+7c7ce000-7c8cb000 r--p 02f89000 fd:01 275139     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/jni/libjfxwebkit.so
+7c8cb000-7c8e3000 rw-p 03086000 fd:01 275139     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/jni/libjfxwebkit.so
+7c8e3000-7ca00000 rw-p 00000000 00:00 0 
+7ca00000-7caff000 rw-p 00000000 00:00 0 
+7caff000-7cb00000 ---p 00000000 00:00 0 
+7cb05000-7cb20000 r--p 00000000 fd:01 255579     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/share/icons/Adwaita/icon-theme.cache
+7cb20000-7cb23000 ---p 00000000 00:00 0 
+7cb23000-7cc70000 rw-p 00000000 00:00 0 
+7cc70000-7cc73000 ---p 00000000 00:00 0 
+7cc73000-7ccc0000 rw-p 00000000 00:00 0 
+7ccc0000-7ccc3000 ---p 00000000 00:00 0 
+7ccc3000-7cd10000 rw-p 00000000 00:00 0 
+7cd10000-7cd13000 ---p 00000000 00:00 0 
+7cd13000-7cd60000 rw-p 00000000 00:00 0 
+7cd60000-7cd63000 ---p 00000000 00:00 0 
+7cd63000-7cdb0000 rw-p 00000000 00:00 0 
+7cdb0000-7cdb3000 ---p 00000000 00:00 0 
+7cdb3000-7ce00000 rw-p 00000000 00:00 0 
+7ce00000-7cef6000 rw-p 00000000 00:00 0 
+7cef6000-7cf00000 ---p 00000000 00:00 0 
+7cf00000-7d000000 rw-p 00000000 00:00 0 
+7d000000-7d023000 rw-p 00000000 00:00 0 
+7d023000-7d100000 ---p 00000000 00:00 0 
+7d100000-7d10d000 r-xp 00000000 fd:01 361781     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/jni/libdecora_sse.so
+7d10d000-7d11c000 ---p 0000d000 fd:01 361781     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/jni/libdecora_sse.so
+7d11c000-7d11d000 r--p 0000c000 fd:01 361781     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/jni/libdecora_sse.so
+7d11d000-7d11e000 rw-p 0000d000 fd:01 361781     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/jni/libdecora_sse.so
+7d11e000-7d122000 r-xp 00000000 fd:01 253480     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libmanagement_ext.so
+7d122000-7d131000 ---p 00004000 fd:01 253480     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libmanagement_ext.so
+7d131000-7d132000 r--p 00003000 fd:01 253480     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libmanagement_ext.so
+7d132000-7d133000 rw-p 00004000 fd:01 253480     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libmanagement_ext.so
+7d133000-7d136000 r-xp 00000000 fd:01 253478     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libmanagement.so
+7d136000-7d145000 ---p 00003000 fd:01 253478     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libmanagement.so
+7d145000-7d146000 r--p 00002000 fd:01 253478     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libmanagement.so
+7d146000-7d147000 rw-p 00003000 fd:01 253478     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libmanagement.so
+7d147000-7d14a000 ---p 00000000 00:00 0 
+7d14a000-7d197000 rw-p 00000000 00:00 0 
+7d197000-7d19a000 ---p 00000000 00:00 0 
+7d19a000-7d1e7000 rw-p 00000000 00:00 0 
+7d1e7000-7d1ea000 ---p 00000000 00:00 0 
+7d1ea000-7d237000 rw-p 00000000 00:00 0 
+7d237000-7d23a000 ---p 00000000 00:00 0 
+7d23a000-7d34d000 rw-p 00000000 00:00 0 
+7d34d000-7d35a000 ---p 00000000 00:00 0 
+7d35a000-7d3a7000 rw-p 00000000 00:00 0 
+7d3a7000-7d3aa000 ---p 00000000 00:00 0 
+7d3aa000-7d3f7000 rw-p 00000000 00:00 0 
+7d3f7000-7d3fa000 ---p 00000000 00:00 0 
+7d3fa000-7d547000 rw-p 00000000 00:00 0 
+7d547000-7d600000 r--p 00000000 fd:01 231464     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf
+7d600000-7d700000 rw-p 00000000 00:00 0 
+7d700000-7d7fd000 rw-p 00000000 00:00 0 
+7d7fd000-7d800000 ---p 00000000 00:00 0 
+7d800000-7d900000 rw-p 00000000 00:00 0 
+7d900000-7d9ea000 rw-p 00000000 00:00 0 
+7d9ea000-7da00000 ---p 00000000 00:00 0 
+7da00000-7db00000 rw-p 00000000 00:00 0 
+7db00000-7dc00000 rw-p 00000000 00:00 0 
+7dc10000-7dd10000 rw-p 00000000 00:00 0 
+7dd10000-7dd35000 r--p 00000000 fd:01 365152     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/tmp/+JXF11197396955017107904.tmp
+7dd35000-7dd52000 r--p 00000000 fd:01 365151     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/tmp/+JXF2973252490820469572.tmp
+7dd52000-7dd6f000 r--p 00000000 fd:01 365150     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/tmp/+JXF14873022994600753387.tmp
+7dd6f000-7dd94000 r--p 00000000 fd:01 365149     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/tmp/+JXF8245489837234770069.tmp
+7dd94000-7ddb0000 r--p 00000000 fd:01 365148     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/tmp/+JXF3528517674429558556.tmp
+7ddb0000-7ddce000 r--p 00000000 fd:01 365147     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/tmp/+JXF2987393253316711594.tmp
+7ddce000-7ddec000 r--p 00000000 fd:01 365146     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/tmp/+JXF1418405583240880015.tmp
+7ddec000-7ddef000 r-xp 00000000 fd:01 350955     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/jni/libjavafx_font_pango.so
+7ddef000-7ddfe000 ---p 00003000 fd:01 350955     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/jni/libjavafx_font_pango.so
+7ddfe000-7ddff000 r--p 00002000 fd:01 350955     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/jni/libjavafx_font_pango.so
+7ddff000-7de00000 rw-p 00003000 fd:01 350955     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/jni/libjavafx_font_pango.so
+7de00000-7df00000 rw-p 00000000 00:00 0 
+7df00000-7e000000 rw-p 00000000 00:00 0 
+7e000000-7e100000 rw-p 00000000 00:00 0 
+7e100000-7e200000 rw-p 00000000 00:00 0 
+7e200000-7e300000 rw-p 00000000 00:00 0 
+7e300000-7e3fe000 rw-p 00000000 00:00 0 
+7e3fe000-7e400000 ---p 00000000 00:00 0 
+7e410000-7e413000 ---p 00000000 00:00 0 
+7e413000-7e460000 rw-p 00000000 00:00 0 
+7e460000-7e463000 ---p 00000000 00:00 0 
+7e463000-7e5b0000 rw-p 00000000 00:00 0 
+7e5b0000-7e5b3000 ---p 00000000 00:00 0 
+7e5b3000-7e6fa000 rw-p 00000000 00:00 0 
+7e6fa000-7e700000 ---p 00000000 00:00 0 
+7e700000-7e800000 rw-p 00000000 00:00 0 
+7e806000-7e823000 r--p 00000000 fd:01 365145     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/tmp/+JXF491349183168756097.tmp
+7e823000-7e923000 rw-p 00000000 00:00 0 
+7e923000-7e926000 ---p 00000000 00:00 0 
+7e926000-7e973000 rw-p 00000000 00:00 0 
+7e982000-7e989000 r-xp 00000000 fd:01 280111     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/jni/libprism_common.so
+7e989000-7e998000 ---p 00007000 fd:01 280111     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/jni/libprism_common.so
+7e998000-7e999000 r--p 00006000 fd:01 280111     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/jni/libprism_common.so
+7e999000-7e99a000 rw-p 00007000 fd:01 280111     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/jni/libprism_common.so
+7e99a000-7e99d000 r-xp 00000000 fd:01 215423     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libnss_dns-2.28.so
+7e99d000-7e9ac000 ---p 00003000 fd:01 215423     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libnss_dns-2.28.so
+7e9ac000-7e9ad000 r--p 00002000 fd:01 215423     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libnss_dns-2.28.so
+7e9ad000-7e9ae000 rw-p 00003000 fd:01 215423     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libnss_dns-2.28.so
+7e9ae000-7e9b0000 r-xp 00000000 fd:01 279502     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libnss_mdns4_minimal.so.2
+7e9b0000-7e9bf000 ---p 00002000 fd:01 279502     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libnss_mdns4_minimal.so.2
+7e9bf000-7e9c0000 r--p 00001000 fd:01 279502     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libnss_mdns4_minimal.so.2
+7e9c0000-7e9c1000 rw-p 00002000 fd:01 279502     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libnss_mdns4_minimal.so.2
+7e9d3000-7e9ee000 r-xp 00000000 fd:01 253488     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libsunec.so
+7e9ee000-7e9fd000 ---p 0001b000 fd:01 253488     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libsunec.so
+7e9fd000-7e9ff000 r--p 0001a000 fd:01 253488     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libsunec.so
+7e9ff000-7ea00000 rw-p 0001c000 fd:01 253488     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libsunec.so
+7ea00000-7eb00000 rw-p 00000000 00:00 0 
+7eb00000-7ebfd000 rw-p 00000000 00:00 0 
+7ebfd000-7ec00000 ---p 00000000 00:00 0 
+7ec00000-7ed00000 rw-p 00000000 00:00 0 
+7ed00000-7ee00000 rw-p 00000000 00:00 0 
+7ee00000-7eeea000 rw-p 00000000 00:00 0 
+7eeea000-7ef00000 ---p 00000000 00:00 0 
+7ef00000-7f000000 rw-p 00000000 00:00 0 
+7f000000-7f0f2000 rw-p 00000000 00:00 0 
+7f0f2000-7f100000 ---p 00000000 00:00 0 
+7f111000-7f114000 ---p 00000000 00:00 0 
+7f114000-7f161000 rw-p 00000000 00:00 0 
+7f161000-7f164000 r-xp 00000000 fd:01 357338     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/jni/libjavafx_font_freetype.so
+7f164000-7f174000 ---p 00003000 fd:01 357338     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/jni/libjavafx_font_freetype.so
+7f174000-7f175000 r--p 00003000 fd:01 357338     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/jni/libjavafx_font_freetype.so
+7f175000-7f176000 rw-p 00004000 fd:01 357338     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/jni/libjavafx_font_freetype.so
+7f176000-7f276000 rw-p 00000000 00:00 0 
+7f276000-7f278000 r-xp 00000000 fd:01 362076     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/jni/libjavafx_font.so
+7f278000-7f288000 ---p 00002000 fd:01 362076     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/jni/libjavafx_font.so
+7f288000-7f289000 r--p 00002000 fd:01 362076     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/jni/libjavafx_font.so
+7f289000-7f28a000 rw-p 00003000 fd:01 362076     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/jni/libjavafx_font.so
+7f28a000-7f38a000 rw-p 00000000 00:00 0 
+7f38a000-7f38d000 ---p 00000000 00:00 0 
+7f38d000-7f3da000 rw-p 00000000 00:00 0 
+7f3da000-7f3db000 ---p 00000000 00:00 0 
+7f3db000-7f45c000 rw-p 00000000 00:00 0 
+7f45c000-7f45d000 ---p 00000000 00:00 0 
+7f45d000-7f4de000 rw-p 00000000 00:00 0 
+7f4de000-7f4df000 ---p 00000000 00:00 0 
+7f4df000-7f660000 rw-p 00000000 00:00 0 
+7f660000-7f663000 ---p 00000000 00:00 0 
+7f663000-7f6b0000 rw-p 00000000 00:00 0 
+7f6b0000-7f6b3000 ---p 00000000 00:00 0 
+7f6b3000-7f700000 rw-p 00000000 00:00 0 
+7f700000-7f7fa000 rw-p 00000000 00:00 0 
+7f7fa000-7f800000 ---p 00000000 00:00 0 
+7f800000-7f900000 rw-p 00000000 00:00 0 
+7f900000-7f9ea000 rw-p 00000000 00:00 0 
+7f9ea000-7fa00000 ---p 00000000 00:00 0 
+7fa08000-7fa10000 r-xp 00000000 fd:01 253465     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libfontmanager.so
+7fa10000-7fa1f000 ---p 00008000 fd:01 253465     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libfontmanager.so
+7fa1f000-7fa20000 r--p 00007000 fd:01 253465     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libfontmanager.so
+7fa20000-7fa21000 rw-p 00008000 fd:01 253465     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libfontmanager.so
+7fa21000-7fa62000 r-xp 00000000 fd:01 255161     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libawt_xawt.so
+7fa62000-7fa71000 ---p 00041000 fd:01 255161     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libawt_xawt.so
+7fa71000-7fa72000 r--p 00040000 fd:01 255161     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libawt_xawt.so
+7fa72000-7fa74000 rw-p 00041000 fd:01 255161     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libawt_xawt.so
+7fa74000-7fa75000 rw-p 00000000 00:00 0 
+7fa75000-7fad1000 r-xp 00000000 fd:01 253461     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libawt.so
+7fad1000-7fae0000 ---p 0005c000 fd:01 253461     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libawt.so
+7fae0000-7fae1000 r--p 0005b000 fd:01 253461     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libawt.so
+7fae1000-7fae7000 rw-p 0005c000 fd:01 253461     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libawt.so
+7fae7000-7fc0c000 rw-p 00000000 00:00 0 
+7fc0c000-7fc0d000 ---p 00000000 00:00 0 
+7fc0d000-8040d000 rw-p 00000000 00:00 0 
+8040d000-8040e000 ---p 00000000 00:00 0 
+8040e000-80c0e000 rw-p 00000000 00:00 0 
+80c0e000-80c16000 r-xp 00000000 fd:01 252730     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/gio/modules/libdconfsettings.so
+80c16000-80c25000 ---p 00008000 fd:01 252730     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/gio/modules/libdconfsettings.so
+80c25000-80c26000 r--p 00007000 fd:01 252730     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/gio/modules/libdconfsettings.so
+80c26000-80c27000 rw-p 00008000 fd:01 252730     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/gio/modules/libdconfsettings.so
+80c27000-80c2a000 ---p 00000000 00:00 0 
+80c2a000-80c77000 rw-p 00000000 00:00 0 
+80c77000-80c7a000 ---p 00000000 00:00 0 
+80c7a000-80cc7000 rw-p 00000000 00:00 0 
+80cc7000-80cc8000 ---p 00000000 00:00 0 
+80cc8000-814c8000 rw-p 00000000 00:00 0 
+814c8000-814c9000 ---p 00000000 00:00 0 
+814c9000-81cc9000 rw-p 00000000 00:00 0 
+81cc9000-81cca000 ---p 00000000 00:00 0 
+81cca000-824ca000 rw-p 00000000 00:00 0 
+824ca000-824cb000 ---p 00000000 00:00 0 
+824cb000-82ccb000 rw-p 00000000 00:00 0 
+82ccb000-82cce000 r-xp 00000000 fd:01 240059     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXtst.so.6.1.0
+82cce000-82cdd000 ---p 00003000 fd:01 240059     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXtst.so.6.1.0
+82cdd000-82cde000 r--p 00002000 fd:01 240059     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXtst.so.6.1.0
+82cde000-82cdf000 rw-p 00003000 fd:01 240059     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXtst.so.6.1.0
+82cdf000-82ce0000 r-xp 00000000 fd:01 232576     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libgthread-2.0.so.0.5800.3
+82ce0000-82cef000 ---p 00001000 fd:01 232576     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libgthread-2.0.so.0.5800.3
+82cef000-82cf0000 r--p 00000000 fd:01 232576     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libgthread-2.0.so.0.5800.3
+82cf0000-82cf1000 rw-p 00001000 fd:01 232576     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libgthread-2.0.so.0.5800.3
+82cf1000-82d1b000 r-xp 00000000 fd:01 361728     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/jni/libglassgtk3.so
+82d1b000-82d2b000 ---p 0002a000 fd:01 361728     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/jni/libglassgtk3.so
+82d2b000-82d2c000 r--p 0002a000 fd:01 361728     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/jni/libglassgtk3.so
+82d2c000-82d2d000 rw-p 0002b000 fd:01 361728     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/jni/libglassgtk3.so
+82d2d000-82d40000 r-xp 00000000 fd:01 218256     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libgpg-error.so.0.26.1
+82d40000-82d4f000 ---p 00013000 fd:01 218256     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libgpg-error.so.0.26.1
+82d4f000-82d50000 r--p 00012000 fd:01 218256     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libgpg-error.so.0.26.1
+82d50000-82d51000 rw-p 00013000 fd:01 218256     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libgpg-error.so.0.26.1
+82d51000-82dee000 r-xp 00000000 fd:01 218262     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libgcrypt.so.20.2.4
+82dee000-82dfe000 ---p 0009d000 fd:01 218262     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libgcrypt.so.20.2.4
+82dfe000-82dff000 r--p 0009d000 fd:01 218262     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libgcrypt.so.20.2.4
+82dff000-82e03000 rw-p 0009e000 fd:01 218262     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libgcrypt.so.20.2.4
+82e03000-82e16000 r-xp 00000000 fd:01 311061     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/liblz4.so.1.8.3
+82e16000-82e26000 ---p 00013000 fd:01 311061     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/liblz4.so.1.8.3
+82e26000-82e27000 r--p 00013000 fd:01 311061     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/liblz4.so.1.8.3
+82e27000-82e28000 rw-p 00014000 fd:01 311061     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/liblz4.so.1.8.3
+82e28000-82e41000 r-xp 00000000 fd:01 218295     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/liblzma.so.5.2.4
+82e41000-82e50000 ---p 00019000 fd:01 218295     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/liblzma.so.5.2.4
+82e50000-82e51000 r--p 00018000 fd:01 218295     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/liblzma.so.5.2.4
+82e51000-82e52000 rw-p 00019000 fd:01 218295     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/liblzma.so.5.2.4
+82e52000-82e55000 r-xp 00000000 fd:01 315522     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libdatrie.so.1.3.5
+82e55000-82e64000 ---p 00003000 fd:01 315522     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libdatrie.so.1.3.5
+82e64000-82e65000 r--p 00002000 fd:01 315522     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libdatrie.so.1.3.5
+82e65000-82e66000 rw-p 00003000 fd:01 315522     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libdatrie.so.1.3.5
+82e66000-82e97000 r-xp 00000000 fd:01 218273     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libblkid.so.1.1.0
+82e97000-82ea6000 ---p 00031000 fd:01 218273     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libblkid.so.1.1.0
+82ea6000-82ea9000 r--p 00030000 fd:01 218273     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libblkid.so.1.1.0
+82ea9000-82eaa000 rw-p 00033000 fd:01 218273     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libblkid.so.1.1.0
+82eaa000-82f0f000 r-xp 00000000 fd:01 246138     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libsystemd.so.0.25.0
+82f0f000-82f1e000 ---p 00065000 fd:01 246138     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libsystemd.so.0.25.0
+82f1e000-82f20000 r--p 00064000 fd:01 246138     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libsystemd.so.0.25.0
+82f20000-82f21000 rw-p 00066000 fd:01 246138     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libsystemd.so.0.25.0
+82f21000-82f26000 r-xp 00000000 fd:01 217958     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libuuid.so.1.3.0
+82f26000-82f35000 ---p 00005000 fd:01 217958     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libuuid.so.1.3.0
+82f35000-82f36000 r--p 00004000 fd:01 217958     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libuuid.so.1.3.0
+82f36000-82f37000 rw-p 00005000 fd:01 217958     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libuuid.so.1.3.0
+82f37000-82f83000 r-xp 00000000 fd:01 218255     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libpcre.so.3.13.3
+82f83000-82f92000 ---p 0004c000 fd:01 218255     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libpcre.so.3.13.3
+82f92000-82f93000 r--p 0004b000 fd:01 218255     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libpcre.so.3.13.3
+82f93000-82f94000 rw-p 0004c000 fd:01 218255     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libpcre.so.3.13.3
+82f94000-82fab000 r-xp 00000000 fd:01 315510     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libfribidi.so.0.4.0
+82fab000-82fbb000 ---p 00017000 fd:01 315510     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libfribidi.so.0.4.0
+82fbb000-82fbc000 r--p 00017000 fd:01 315510     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libfribidi.so.0.4.0
+82fbc000-82fbd000 rw-p 00018000 fd:01 315510     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libfribidi.so.0.4.0
+82fbd000-82fc2000 r-xp 00000000 fd:01 316107     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libthai.so.0.3.1
+82fc2000-82fd2000 ---p 00005000 fd:01 316107     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libthai.so.0.3.1
+82fd2000-82fd3000 r--p 00005000 fd:01 316107     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libthai.so.0.3.1
+82fd3000-82fd4000 rw-p 00006000 fd:01 316107     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libthai.so.0.3.1
+82fd4000-82fec000 r-xp 00000000 fd:01 315827     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libgraphite2.so.3.2.1
+82fec000-82ffc000 ---p 00018000 fd:01 315827     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libgraphite2.so.3.2.1
+82ffc000-82ffd000 r--p 00018000 fd:01 315827     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libgraphite2.so.3.2.1
+82ffd000-82ffe000 rw-p 00019000 fd:01 315827     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libgraphite2.so.3.2.1
+82ffe000-8300a000 r-xp 00000000 fd:01 217940     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libresolv-2.28.so
+8300a000-8301a000 ---p 0000c000 fd:01 217940     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libresolv-2.28.so
+8301a000-8301b000 r--p 0000c000 fd:01 217940     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libresolv-2.28.so
+8301b000-8301c000 rw-p 0000d000 fd:01 217940     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libresolv-2.28.so
+8301c000-8301e000 rw-p 00000000 00:00 0 
+8301e000-83035000 r-xp 00000000 fd:01 215502     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libselinux.so.1
+83035000-83045000 ---p 00017000 fd:01 215502     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libselinux.so.1
+83045000-83046000 r--p 00017000 fd:01 215502     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libselinux.so.1
+83046000-83047000 rw-p 00018000 fd:01 215502     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libselinux.so.1
+83047000-83048000 rw-p 00000000 00:00 0 
+83048000-83082000 r-xp 00000000 fd:01 215496     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libmount.so.1.1.0
+83082000-83091000 ---p 0003a000 fd:01 215496     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libmount.so.1.1.0
+83091000-83093000 r--p 00039000 fd:01 215496     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libmount.so.1.1.0
+83093000-83094000 rw-p 0003b000 fd:01 215496     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libmount.so.1.1.0
+83094000-830b1000 r-xp 00000000 fd:01 252520     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libatspi.so.0.0.1
+830b1000-830c1000 ---p 0001d000 fd:01 252520     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libatspi.so.0.0.1
+830c1000-830c3000 r--p 0001d000 fd:01 252520     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libatspi.so.0.0.1
+830c3000-830c4000 rw-p 0001f000 fd:01 252520     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libatspi.so.0.0.1
+830c4000-830f3000 r-xp 00000000 fd:01 220892     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libdbus-1.so.3.19.13
+830f3000-83103000 ---p 0002f000 fd:01 220892     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libdbus-1.so.3.19.13
+83103000-83104000 r--p 0002f000 fd:01 220892     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libdbus-1.so.3.19.13
+83104000-83105000 rw-p 00030000 fd:01 220892     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libdbus-1.so.3.19.13
+83105000-8310b000 r-xp 00000000 fd:01 311920     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXrender.so.1.3.0
+8310b000-8311a000 ---p 00006000 fd:01 311920     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXrender.so.1.3.0
+8311a000-8311b000 r--p 00005000 fd:01 311920     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXrender.so.1.3.0
+8311b000-8311c000 rw-p 00006000 fd:01 311920     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXrender.so.1.3.0
+8311c000-83124000 r-xp 00000000 fd:01 315114     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libxcb-render.so.0.0.0
+83124000-83133000 ---p 00008000 fd:01 315114     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libxcb-render.so.0.0.0
+83133000-83134000 r--p 00007000 fd:01 315114     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libxcb-render.so.0.0.0
+83134000-83135000 rw-p 00008000 fd:01 315114     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libxcb-render.so.0.0.0
+83135000-83137000 r-xp 00000000 fd:01 315712     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libxcb-shm.so.0.0.0
+83137000-83146000 ---p 00002000 fd:01 315712     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libxcb-shm.so.0.0.0
+83146000-83147000 r--p 00001000 fd:01 315712     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libxcb-shm.so.0.0.0
+83147000-83148000 rw-p 00002000 fd:01 315712     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libxcb-shm.so.0.0.0
+83148000-83169000 r-xp 00000000 fd:01 231060     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libpng16.so.16.36.0
+83169000-83178000 ---p 00021000 fd:01 231060     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libpng16.so.16.36.0
+83178000-83179000 r--p 00020000 fd:01 231060     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libpng16.so.16.36.0
+83179000-8317a000 rw-p 00021000 fd:01 231060     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libpng16.so.16.36.0
+8317a000-831ec000 r-xp 00000000 fd:01 315230     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libpixman-1.so.0.36.0
+831ec000-831fb000 ---p 00072000 fd:01 315230     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libpixman-1.so.0.36.0
+831fb000-83201000 r--p 00071000 fd:01 315230     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libpixman-1.so.0.36.0
+83201000-83202000 rw-p 00077000 fd:01 315230     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libpixman-1.so.0.36.0
+83202000-83208000 r-xp 00000000 fd:01 235075     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXcursor.so.1.0.2
+83208000-83217000 ---p 00006000 fd:01 235075     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXcursor.so.1.0.2
+83217000-83218000 r--p 00005000 fd:01 235075     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXcursor.so.1.0.2
+83218000-83219000 rw-p 00006000 fd:01 235075     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXcursor.so.1.0.2
+83219000-8321f000 r-xp 00000000 fd:01 235154     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXrandr.so.2.2.0
+8321f000-8322e000 ---p 00006000 fd:01 235154     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXrandr.so.2.2.0
+8322e000-8322f000 r--p 00005000 fd:01 235154     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXrandr.so.2.2.0
+8322f000-83230000 rw-p 00006000 fd:01 235154     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXrandr.so.2.2.0
+83230000-83231000 r-xp 00000000 fd:01 316055     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXinerama.so.1.0.0
+83231000-83241000 ---p 00001000 fd:01 316055     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXinerama.so.1.0.0
+83241000-83242000 r--p 00001000 fd:01 316055     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXinerama.so.1.0.0
+83242000-83243000 rw-p 00002000 fd:01 316055     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXinerama.so.1.0.0
+83243000-832ac000 r-xp 00000000 fd:01 231192     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libfreetype.so.6.16.1
+832ac000-832bc000 ---p 00069000 fd:01 231192     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libfreetype.so.6.16.1
+832bc000-832c0000 r--p 00069000 fd:01 231192     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libfreetype.so.6.16.1
+832c0000-832c1000 rw-p 0006d000 fd:01 231192     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libfreetype.so.6.16.1
+832c1000-832eb000 r-xp 00000000 fd:01 232124     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libfontconfig.so.1.12.0
+832eb000-832fb000 ---p 0002a000 fd:01 232124     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libfontconfig.so.1.12.0
+832fb000-832fc000 r--p 0002a000 fd:01 232124     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libfontconfig.so.1.12.0
+832fc000-832fd000 rw-p 0002b000 fd:01 232124     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libfontconfig.so.1.12.0
+832fd000-833cd000 r-xp 00000000 fd:01 232573     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libglib-2.0.so.0.5800.3
+833cd000-833dc000 ---p 000d0000 fd:01 232573     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libglib-2.0.so.0.5800.3
+833dc000-833dd000 r--p 000cf000 fd:01 232573     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libglib-2.0.so.0.5800.3
+833dd000-833de000 rw-p 000d0000 fd:01 232573     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libglib-2.0.so.0.5800.3
+833de000-83416000 r-xp 00000000 fd:01 232575     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libgobject-2.0.so.0.5800.3
+83416000-83426000 ---p 00038000 fd:01 232575     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libgobject-2.0.so.0.5800.3
+83426000-83427000 r--p 00038000 fd:01 232575     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libgobject-2.0.so.0.5800.3
+83427000-83428000 rw-p 00039000 fd:01 232575     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libgobject-2.0.so.0.5800.3
+83428000-83457000 r-xp 00000000 fd:01 316016     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libpango-1.0.so.0.4200.3
+83457000-83466000 ---p 0002f000 fd:01 316016     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libpango-1.0.so.0.4200.3
+83466000-83468000 r--p 0002e000 fd:01 316016     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libpango-1.0.so.0.4200.3
+83468000-83469000 rw-p 00030000 fd:01 316016     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libpango-1.0.so.0.4200.3
+83469000-83476000 r-xp 00000000 fd:01 316210     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libpangoft2-1.0.so.0.4200.3
+83476000-83486000 ---p 0000d000 fd:01 316210     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libpangoft2-1.0.so.0.4200.3
+83486000-83487000 r--p 0000d000 fd:01 316210     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libpangoft2-1.0.so.0.4200.3
+83487000-83488000 rw-p 0000e000 fd:01 316210     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libpangoft2-1.0.so.0.4200.3
+83488000-83538000 r-xp 00000000 fd:01 315991     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libharfbuzz.so.0.20301.0
+83538000-83547000 ---p 000b0000 fd:01 315991     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libharfbuzz.so.0.20301.0
+83547000-83548000 r--p 000af000 fd:01 315991     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libharfbuzz.so.0.20301.0
+83548000-83549000 rw-p 000b0000 fd:01 315991     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libharfbuzz.so.0.20301.0
+83549000-8354b000 rw-p 00000000 00:00 0 
+8354b000-83651000 r-xp 00000000 fd:01 232572     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libgio-2.0.so.0.5800.3
+83651000-83661000 ---p 00106000 fd:01 232572     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libgio-2.0.so.0.5800.3
+83661000-83665000 r--p 00106000 fd:01 232572     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libgio-2.0.so.0.5800.3
+83665000-83666000 rw-p 0010a000 fd:01 232572     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libgio-2.0.so.0.5800.3
+83666000-83667000 rw-p 00000000 00:00 0 
+83667000-8371b000 r-xp 00000000 fd:01 243545     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libepoxy.so.0.0.0
+8371b000-8372b000 ---p 000b4000 fd:01 243545     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libepoxy.so.0.0.0
+8372b000-8372f000 r--p 000b4000 fd:01 243545     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libepoxy.so.0.0.0
+8372f000-83733000 rw-p 000b8000 fd:01 243545     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libepoxy.so.0.0.0
+83733000-8373a000 r-xp 00000000 fd:01 243377     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libwayland-client.so.0.3.0
+8373a000-8374a000 ---p 00007000 fd:01 243377     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libwayland-client.so.0.3.0
+8374a000-8374b000 r--p 00007000 fd:01 243377     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libwayland-client.so.0.3.0
+8374b000-8374c000 rw-p 00008000 fd:01 243377     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libwayland-client.so.0.3.0
+8374c000-8374d000 r-xp 00000000 fd:01 254363     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libwayland-egl.so.1.0.0
+8374d000-8375c000 ---p 00001000 fd:01 254363     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libwayland-egl.so.1.0.0
+8375c000-8375d000 r--p 00000000 fd:01 254363     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libwayland-egl.so.1.0.0
+8375d000-8375e000 rw-p 00001000 fd:01 254363     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libwayland-egl.so.1.0.0
+8375e000-8378c000 r-xp 00000000 fd:01 254393     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libxkbcommon.so.0.0.0
+8378c000-8379c000 ---p 0002e000 fd:01 254393     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libxkbcommon.so.0.0.0
+8379c000-8379d000 r--p 0002e000 fd:01 254393     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libxkbcommon.so.0.0.0
+8379d000-8379e000 rw-p 0002f000 fd:01 254393     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libxkbcommon.so.0.0.0
+8379e000-837bd000 r-xp 00000000 fd:01 254091     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libatk-bridge-2.0.so.0.0.0
+837bd000-837cd000 ---p 0001f000 fd:01 254091     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libatk-bridge-2.0.so.0.0.0
+837cd000-837ce000 r--p 0001f000 fd:01 254091     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libatk-bridge-2.0.so.0.0.0
+837ce000-837cf000 rw-p 00020000 fd:01 254091     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libatk-bridge-2.0.so.0.0.0
+837cf000-837e5000 r-xp 00000000 fd:01 254067     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libatk-1.0.so.0.23009.1
+837e5000-837f5000 ---p 00016000 fd:01 254067     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libatk-1.0.so.0.23009.1
+837f5000-837f7000 r--p 00016000 fd:01 254067     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libatk-1.0.so.0.23009.1
+837f7000-837f8000 rw-p 00018000 fd:01 254067     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libatk-1.0.so.0.23009.1
+837f8000-83811000 r-xp 00000000 fd:01 311852     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libgdk_pixbuf-2.0.so.0.3800.1
+83811000-83821000 ---p 00019000 fd:01 311852     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libgdk_pixbuf-2.0.so.0.3800.1
+83821000-83822000 r--p 00019000 fd:01 311852     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libgdk_pixbuf-2.0.so.0.3800.1
+83822000-83823000 rw-p 0001a000 fd:01 311852     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libgdk_pixbuf-2.0.so.0.3800.1
+83823000-83ce3000 r-xp 00000000 fd:01 254749     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libgtk-3.so.0.2404.1
+83ce3000-83cf2000 ---p 004c0000 fd:01 254749     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libgtk-3.so.0.2404.1
+83cf2000-83cfb000 r--p 004bf000 fd:01 254749     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libgtk-3.so.0.2404.1
+83cfb000-83cfd000 rw-p 004c8000 fd:01 254749     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libgtk-3.so.0.2404.1
+83cfd000-83d00000 rw-p 00000000 00:00 0 
+83d00000-83e00000 rw-p 00000000 00:00 0 
+83e02000-83e05000 r-xp 00000000 fd:01 254335     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libwayland-cursor.so.0.0.0
+83e05000-83e14000 ---p 00003000 fd:01 254335     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libwayland-cursor.so.0.0.0
+83e14000-83e15000 r--p 00002000 fd:01 254335     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libwayland-cursor.so.0.0.0
+83e15000-83e19000 rw-p 00003000 fd:01 254335     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libwayland-cursor.so.0.0.0
+83e19000-83ec5000 r-xp 00000000 fd:01 315668     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libcairo.so.2.11600.0
+83ec5000-83ed4000 ---p 000ac000 fd:01 315668     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libcairo.so.2.11600.0
+83ed4000-83ed6000 r--p 000ab000 fd:01 315668     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libcairo.so.2.11600.0
+83ed6000-83ed7000 rw-p 000ad000 fd:01 315668     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libcairo.so.2.11600.0
+83ed7000-83edc000 r-xp 00000000 fd:01 254122     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libcairo-gobject.so.2.11600.0
+83edc000-83eeb000 ---p 00005000 fd:01 254122     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libcairo-gobject.so.2.11600.0
+83eeb000-83eec000 r--p 00004000 fd:01 254122     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libcairo-gobject.so.2.11600.0
+83eec000-83eed000 rw-p 00005000 fd:01 254122     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libcairo-gobject.so.2.11600.0
+83eed000-83eef000 r-xp 00000000 fd:01 239676     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXcomposite.so.1.0.0
+83eef000-83efe000 ---p 00002000 fd:01 239676     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXcomposite.so.1.0.0
+83efe000-83eff000 r--p 00001000 fd:01 239676     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXcomposite.so.1.0.0
+83eff000-83f00000 rw-p 00002000 fd:01 239676     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXcomposite.so.1.0.0
+83f00000-84000000 rw-p 00000000 00:00 0 
+8400e000-84017000 r-xp 00000000 fd:01 235106     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXi.so.6.1.0
+84017000-84026000 ---p 00009000 fd:01 235106     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXi.so.6.1.0
+84026000-84027000 r--p 00008000 fd:01 235106     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXi.so.6.1.0
+84027000-84028000 rw-p 00009000 fd:01 235106     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXi.so.6.1.0
+84028000-84030000 r-xp 00000000 fd:01 316099     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libpangocairo-1.0.so.0.4200.3
+84030000-8403f000 ---p 00008000 fd:01 316099     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libpangocairo-1.0.so.0.4200.3
+8403f000-84040000 r--p 00007000 fd:01 316099     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libpangocairo-1.0.so.0.4200.3
+84040000-84041000 rw-p 00008000 fd:01 316099     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libpangocairo-1.0.so.0.4200.3
+84041000-84043000 r-xp 00000000 fd:01 232574     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libgmodule-2.0.so.0.5800.3
+84043000-84052000 ---p 00002000 fd:01 232574     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libgmodule-2.0.so.0.5800.3
+84052000-84053000 r--p 00001000 fd:01 232574     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libgmodule-2.0.so.0.5800.3
+84053000-84054000 rw-p 00002000 fd:01 232574     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libgmodule-2.0.so.0.5800.3
+84054000-840eb000 r-xp 00000000 fd:01 254746     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libgdk-3.so.0.2404.1
+840eb000-840fb000 ---p 00097000 fd:01 254746     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libgdk-3.so.0.2404.1
+840fb000-840ff000 r--p 00097000 fd:01 254746     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libgdk-3.so.0.2404.1
+840ff000-84100000 rw-p 0009b000 fd:01 254746     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libgdk-3.so.0.2404.1
+84100000-84101000 rw-p 00000000 00:00 0 
+84101000-84102000 r-xp 00000000 fd:01 253464     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libextnet.so
+84102000-84111000 ---p 00001000 fd:01 253464     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libextnet.so
+84111000-84112000 r--p 00000000 fd:01 253464     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libextnet.so
+84112000-84113000 rw-p 00001000 fd:01 253464     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libextnet.so
+84113000-8411e000 r-xp 00000000 fd:01 280413     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/jni/libprism_sw.so
+8411e000-8412d000 ---p 0000b000 fd:01 280413     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/jni/libprism_sw.so
+8412d000-8412e000 r--p 0000a000 fd:01 280413     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/jni/libprism_sw.so
+8412e000-8412f000 rw-p 0000b000 fd:01 280413     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/jni/libprism_sw.so
+8412f000-84130000 ---p 00000000 00:00 0 
+84130000-84930000 rw-p 00000000 00:00 0 
+84930000-84931000 ---p 00000000 00:00 0 
+84931000-85131000 rw-p 00000000 00:00 0 
+85131000-85132000 ---p 00000000 00:00 0 
+85132000-85932000 rw-p 00000000 00:00 0 
+85932000-85933000 ---p 00000000 00:00 0 
+85933000-86133000 rw-p 00000000 00:00 0 
+86133000-8614d000 r-xp 00000000 fd:01 215386     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libtinfo.so.6.1
+8614d000-8615d000 ---p 0001a000 fd:01 215386     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libtinfo.so.6.1
+8615d000-8615f000 r--p 0001a000 fd:01 215386     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libtinfo.so.6.1
+8615f000-86160000 rw-p 0001c000 fd:01 215386     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libtinfo.so.6.1
+86160000-8617c000 r-xp 00000000 fd:01 234659     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libedit.so.2.0.59
+8617c000-8618c000 ---p 0001c000 fd:01 234659     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libedit.so.2.0.59
+8618c000-8618d000 r--p 0001c000 fd:01 234659     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libedit.so.2.0.59
+8618d000-8618e000 rw-p 0001d000 fd:01 234659     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libedit.so.2.0.59
+8618e000-86190000 rw-p 00000000 00:00 0 
+86190000-86195000 r-xp 00000000 fd:01 217953     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libffi.so.6.0.4
+86195000-861a4000 ---p 00005000 fd:01 217953     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libffi.so.6.0.4
+861a4000-861a5000 r--p 00004000 fd:01 217953     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libffi.so.6.0.4
+861a5000-861a6000 rw-p 00005000 fd:01 217953     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libffi.so.6.0.4
+861a6000-861a9000 r-xp 00000000 fd:01 234611     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libdrm_etnaviv.so.1.0.0
+861a9000-861b8000 ---p 00003000 fd:01 234611     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libdrm_etnaviv.so.1.0.0
+861b8000-861b9000 r--p 00002000 fd:01 234611     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libdrm_etnaviv.so.1.0.0
+861b9000-861ba000 rw-p 00003000 fd:01 234611     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libdrm_etnaviv.so.1.0.0
+861ba000-861bf000 r-xp 00000000 fd:01 234627     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libdrm_nouveau.so.2.0.0
+861bf000-861ce000 ---p 00005000 fd:01 234627     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libdrm_nouveau.so.2.0.0
+861ce000-861cf000 r--p 00004000 fd:01 234627     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libdrm_nouveau.so.2.0.0
+861cf000-861d0000 rw-p 00005000 fd:01 234627     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libdrm_nouveau.so.2.0.0
+861d0000-861d6000 r-xp 00000000 fd:01 234596     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libdrm_amdgpu.so.1.0.0
+861d6000-861e5000 ---p 00006000 fd:01 234596     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libdrm_amdgpu.so.1.0.0
+861e5000-861e6000 r--p 00005000 fd:01 234596     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libdrm_amdgpu.so.1.0.0
+861e6000-861e7000 rw-p 00006000 fd:01 234596     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libdrm_amdgpu.so.1.0.0
+861e7000-861f7000 r-xp 00000000 fd:01 234679     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libelf-0.176.so
+861f7000-86206000 ---p 00010000 fd:01 234679     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libelf-0.176.so
+86206000-86207000 r--p 0000f000 fd:01 234679     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libelf-0.176.so
+86207000-86208000 rw-p 00010000 fd:01 234679     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libelf-0.176.so
+86208000-8620f000 r-xp 00000000 fd:01 234643     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libdrm_radeon.so.1.0.1
+8620f000-8621e000 ---p 00007000 fd:01 234643     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libdrm_radeon.so.1.0.1
+8621e000-8621f000 r--p 00006000 fd:01 234643     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libdrm_radeon.so.1.0.1
+8621f000-86220000 rw-p 00007000 fd:01 234643     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libdrm_radeon.so.1.0.1
+86220000-8622a000 r-xp 00000000 fd:01 234798     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libsensors.so.5.0.0
+8622a000-86239000 ---p 0000a000 fd:01 234798     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libsensors.so.5.0.0
+86239000-8623a000 r--p 00009000 fd:01 234798     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libsensors.so.5.0.0
+8623a000-8623b000 rw-p 0000a000 fd:01 234798     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libsensors.so.5.0.0
+8623b000-890ee000 r-xp 00000000 fd:01 234749     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libLLVM-7.so.1
+890ee000-890ef000 ---p 02eb3000 fd:01 234749     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libLLVM-7.so.1
+890ef000-89415000 r--p 02eb3000 fd:01 234749     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libLLVM-7.so.1
+89415000-89430000 rw-p 031d9000 fd:01 234749     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libLLVM-7.so.1
+89430000-8946d000 rw-p 00000000 00:00 0 
+8946d000-89c48000 r-xp 00000000 fd:01 234819     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/dri/.l2s.etnaviv_dri.so.dpkg-new0001.0014
+89c48000-89c58000 ---p 007db000 fd:01 234819     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/dri/.l2s.etnaviv_dri.so.dpkg-new0001.0014
+89c58000-89c9f000 r--p 007db000 fd:01 234819     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/dri/.l2s.etnaviv_dri.so.dpkg-new0001.0014
+89c9f000-89ca9000 rw-p 00822000 fd:01 234819     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/dri/.l2s.etnaviv_dri.so.dpkg-new0001.0014
+89ca9000-89e9e000 rw-p 00000000 00:00 0 
+89e9e000-89ec1000 r-xp 00000000 fd:01 230883     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libexpat.so.1.6.8
+89ec1000-89ed0000 ---p 00023000 fd:01 230883     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libexpat.so.1.6.8
+89ed0000-89ed2000 r--p 00022000 fd:01 230883     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libexpat.so.1.6.8
+89ed2000-89ed3000 rw-p 00024000 fd:01 230883     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libexpat.so.1.6.8
+89ed3000-89ed4000 r-xp 00000000 fd:01 235005     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libxshmfence.so.1.0.0
+89ed4000-89ee3000 ---p 00001000 fd:01 235005     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libxshmfence.so.1.0.0
+89ee3000-89ee4000 r--p 00000000 fd:01 235005     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libxshmfence.so.1.0.0
+89ee4000-89ee5000 rw-p 00001000 fd:01 235005     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libxshmfence.so.1.0.0
+89ee5000-89ee9000 r-xp 00000000 fd:01 234956     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libxcb-sync.so.1.0.0
+89ee9000-89ef8000 ---p 00004000 fd:01 234956     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libxcb-sync.so.1.0.0
+89ef8000-89ef9000 r--p 00003000 fd:01 234956     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libxcb-sync.so.1.0.0
+89ef9000-89efa000 rw-p 00004000 fd:01 234956     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libxcb-sync.so.1.0.0
+89efa000-89efc000 r-xp 00000000 fd:01 234940     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libxcb-present.so.0.0.0
+89efc000-89f0b000 ---p 00002000 fd:01 234940     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libxcb-present.so.0.0.0
+89f0b000-89f0c000 r--p 00001000 fd:01 234940     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libxcb-present.so.0.0.0
+89f0c000-89f0d000 rw-p 00002000 fd:01 234940     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libxcb-present.so.0.0.0
+89f0d000-89f0f000 r-xp 00000000 fd:01 234907     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libxcb-dri3.so.0.0.0
+89f0f000-89f1e000 ---p 00002000 fd:01 234907     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libxcb-dri3.so.0.0.0
+89f1e000-89f1f000 r--p 00001000 fd:01 234907     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libxcb-dri3.so.0.0.0
+89f1f000-89f20000 rw-p 00002000 fd:01 234907     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libxcb-dri3.so.0.0.0
+89f20000-89f21000 r-xp 00000000 fd:01 234987     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXdamage.so.1.1.0
+89f21000-89f30000 ---p 00001000 fd:01 234987     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXdamage.so.1.1.0
+89f30000-89f31000 r--p 00000000 fd:01 234987     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXdamage.so.1.1.0
+89f31000-89f32000 rw-p 00001000 fd:01 234987     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXdamage.so.1.1.0
+89f32000-89f35000 r-xp 00000000 fd:01 234972     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXfixes.so.3.1.0
+89f35000-89f44000 ---p 00003000 fd:01 234972     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXfixes.so.3.1.0
+89f44000-89f45000 r--p 00002000 fd:01 234972     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXfixes.so.3.1.0
+89f45000-89f46000 rw-p 00003000 fd:01 234972     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXfixes.so.3.1.0
+89f46000-89f48000 r-xp 00000000 fd:01 234891     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libxcb-dri2.so.0.0.0
+89f48000-89f58000 ---p 00002000 fd:01 234891     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libxcb-dri2.so.0.0.0
+89f58000-89f59000 r--p 00002000 fd:01 234891     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libxcb-dri2.so.0.0.0
+89f59000-89f5a000 rw-p 00003000 fd:01 234891     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libxcb-dri2.so.0.0.0
+89f5a000-89f69000 r-xp 00000000 fd:01 234923     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libxcb-glx.so.0.0.0
+89f69000-89f78000 ---p 0000f000 fd:01 234923     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libxcb-glx.so.0.0.0
+89f78000-89f79000 r--p 0000e000 fd:01 234923     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libxcb-glx.so.0.0.0
+89f79000-89f7a000 rw-p 0000f000 fd:01 234923     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libxcb-glx.so.0.0.0
+89f7a000-89f9b000 r-xp 00000000 fd:01 234731     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libglapi.so.0.0.0
+89f9b000-89faa000 ---p 00021000 fd:01 234731     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libglapi.so.0.0.0
+89faa000-89fae000 r--p 00020000 fd:01 234731     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libglapi.so.0.0.0
+89fae000-89faf000 rw-p 00024000 fd:01 234731     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libglapi.so.0.0.0
+89faf000-89ff9000 r-xp 00000000 fd:01 235040     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libGLX_mesa.so.0.0.0
+89ff9000-8a008000 ---p 0004a000 fd:01 235040     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libGLX_mesa.so.0.0.0
+8a008000-8a00a000 r--p 00049000 fd:01 235040     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libGLX_mesa.so.0.0.0
+8a00a000-8a00b000 rw-p 0004b000 fd:01 235040     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libGLX_mesa.so.0.0.0
+8a00b000-8a053000 r-xp 00000000 fd:01 234873     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libGLdispatch.so.0.0.0
+8a053000-8a062000 ---p 00048000 fd:01 234873     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libGLdispatch.so.0.0.0
+8a062000-8a07a000 r--p 00047000 fd:01 234873     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libGLdispatch.so.0.0.0
+8a07a000-8a07b000 rw-p 0005f000 fd:01 234873     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libGLdispatch.so.0.0.0
+8a07b000-8a08b000 rw-p 00000000 00:00 0 
+8a08b000-8a0ec000 r-xp 00000000 fd:01 235619     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libGL.so.1.7.0
+8a0ec000-8a0fb000 ---p 00061000 fd:01 235619     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libGL.so.1.7.0
+8a0fb000-8a10c000 r--p 00060000 fd:01 235619     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libGL.so.1.7.0
+8a10c000-8a10d000 rw-p 00071000 fd:01 235619     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libGL.so.1.7.0
+8a10d000-8a1ed000 r-xp 00000000 fd:01 218914     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libX11.so.6.3.0
+8a1ed000-8a1fc000 ---p 000e0000 fd:01 218914     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libX11.so.6.3.0
+8a1fc000-8a1fd000 r--p 000df000 fd:01 218914     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libX11.so.6.3.0
+8a1fd000-8a200000 rw-p 000e0000 fd:01 218914     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libX11.so.6.3.0
+8a200000-8a300000 rw-p 00000000 00:00 0 
+8a300000-8a400000 rw-p 00000000 00:00 0 
+8a406000-8a40e000 rw-p 00000000 00:00 0 
+8a40e000-8a418000 r-xp 00000000 fd:01 234580     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libdrm.so.2.4.0
+8a418000-8a427000 ---p 0000a000 fd:01 234580     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libdrm.so.2.4.0
+8a427000-8a428000 r--p 00009000 fd:01 234580     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libdrm.so.2.4.0
+8a428000-8a429000 rw-p 0000a000 fd:01 234580     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libdrm.so.2.4.0
+8a429000-8a43b000 r-xp 00000000 fd:01 232683     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libbsd.so.0.9.1
+8a43b000-8a44a000 ---p 00012000 fd:01 232683     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libbsd.so.0.9.1
+8a44a000-8a44b000 r--p 00011000 fd:01 232683     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libbsd.so.0.9.1
+8a44b000-8a44c000 rw-p 00012000 fd:01 232683     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libbsd.so.0.9.1
+8a44c000-8a44f000 r-xp 00000000 fd:01 232698     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXdmcp.so.6.0.0
+8a44f000-8a45e000 ---p 00003000 fd:01 232698     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXdmcp.so.6.0.0
+8a45e000-8a45f000 r--p 00002000 fd:01 232698     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXdmcp.so.6.0.0
+8a45f000-8a460000 rw-p 00003000 fd:01 232698     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXdmcp.so.6.0.0
+8a460000-8a463000 ---p 00000000 00:00 0 
+8a463000-8a5b0000 rw-p 00000000 00:00 0 
+8a5b0000-8a5b3000 ---p 00000000 00:00 0 
+8a5b3000-8a600000 rw-p 00000000 00:00 0 
+8a600000-8a639000 rw-p 00000000 00:00 0 
+8a639000-8a700000 ---p 00000000 00:00 0 
+8a705000-8a70d000 rw-p 00000000 00:00 0 
+8a70d000-8a70f000 r-xp 00000000 fd:01 232666     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXau.so.6.0.0
+8a70f000-8a71e000 ---p 00002000 fd:01 232666     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXau.so.6.0.0
+8a71e000-8a71f000 r--p 00001000 fd:01 232666     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXau.so.6.0.0
+8a71f000-8a720000 rw-p 00002000 fd:01 232666     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXau.so.6.0.0
+8a720000-8a72a000 r-xp 00000000 fd:01 235602     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libGLX.so.0.0.0
+8a72a000-8a739000 ---p 0000a000 fd:01 235602     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libGLX.so.0.0.0
+8a739000-8a73a000 r--p 00009000 fd:01 235602     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libGLX.so.0.0.0
+8a73a000-8a73b000 rw-p 0000a000 fd:01 235602     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libGLX.so.0.0.0
+8a73b000-8a73e000 ---p 00000000 00:00 0 
+8a73e000-8a78b000 rw-p 00000000 00:00 0 
+8a78b000-8a78c000 ---p 00000000 00:00 0 
+8a78c000-8a80d000 rw-p 00000000 00:00 0 
+8a80d000-8a810000 ---p 00000000 00:00 0 
+8a810000-8a88d000 rw-p 00000000 00:00 0 
+8a88d000-8aa00000 r--p 00000000 fd:01 218304     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/locale/C.UTF-8/LC_COLLATE
+8aa00000-8aaf4000 rw-p 00000000 00:00 0 
+8aaf4000-8ab00000 ---p 00000000 00:00 0 
+8ab06000-8ab10000 r--s 00000000 fd:01 267859     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/var/cache/fontconfig/2e0989dd-e3f8-4095-bcd8-899c24d13dbb-le32d8.cache-7
+8ab10000-8ab13000 ---p 00000000 00:00 0 
+8ab13000-8ab60000 rw-p 00000000 00:00 0 
+8ab60000-8ab63000 ---p 00000000 00:00 0 
+8ab63000-8abb0000 rw-p 00000000 00:00 0 
+8abb0000-8abb3000 ---p 00000000 00:00 0 
+8abb3000-8ac00000 rw-p 00000000 00:00 0 
+8ac00000-8ad00000 rw-p 00000000 00:00 0 
+8ad00000-8ad01000 r--s 00000000 fd:01 136801     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/root/.local/share/mime/mime.cache
+8ad01000-8ad02000 r--p 00000000 fd:01 311108     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/share/icons/hicolor/icon-theme.cache
+8ad02000-8ad04000 rw-p 00000000 00:00 0 
+8ad04000-8ad0a000 r--s 00000000 fd:01 284351     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/var/cache/fontconfig/c6ad2f68-750d-4b3d-9d2c-6bc867b6bdee-le32d8.cache-7
+8ad0a000-8ad21000 r-xp 00000000 fd:01 232714     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libxcb.so.1.1.0
+8ad21000-8ad30000 ---p 00017000 fd:01 232714     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libxcb.so.1.1.0
+8ad30000-8ad31000 r--p 00016000 fd:01 232714     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libxcb.so.1.1.0
+8ad31000-8ad32000 rw-p 00017000 fd:01 232714     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libxcb.so.1.1.0
+8ad32000-8ad33000 ---p 00000000 00:00 0 
+8ad33000-8b1fa000 rw-p 00000000 00:00 0 
+8b1fa000-8b200000 ---p 00000000 00:00 0 
+8b200000-8b2e7000 rw-p 00000000 00:00 0 
+8b2e7000-8b300000 ---p 00000000 00:00 0 
+8b300000-8b304000 rw-p 00000000 00:00 0 
+8b304000-8b30e000 r-xp 00000000 fd:01 315670     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXext.so.6.4.0
+8b30e000-8b31d000 ---p 0000a000 fd:01 315670     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXext.so.6.4.0
+8b31d000-8b31e000 r--p 00009000 fd:01 315670     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXext.so.6.4.0
+8b31e000-8b31f000 rw-p 0000a000 fd:01 315670     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXext.so.6.4.0
+8b31f000-8b322000 r-xp 00000000 fd:01 235023     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXxf86vm.so.1.0.0
+8b322000-8b331000 ---p 00003000 fd:01 235023     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXxf86vm.so.1.0.0
+8b331000-8b332000 r--p 00002000 fd:01 235023     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXxf86vm.so.1.0.0
+8b332000-8b333000 rw-p 00003000 fd:01 235023     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libXxf86vm.so.1.0.0
+8b333000-8b33b000 r-xp 00000000 fd:01 359067     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/jni/libprism_es2.so
+8b33b000-8b34a000 ---p 00008000 fd:01 359067     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/jni/libprism_es2.so
+8b34a000-8b34b000 r--p 00007000 fd:01 359067     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/jni/libprism_es2.so
+8b34b000-8b34c000 rw-p 00008000 fd:01 359067     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/jni/libprism_es2.so
+8b34c000-8b37e000 r--p 00000000 fd:01 218300     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/locale/C.UTF-8/LC_CTYPE
+8b37e000-8b37f000 ---p 00000000 00:00 0 
+8b37f000-8b400000 rw-p 00000000 00:00 0 
+8b400000-8b4fb000 rw-p 00000000 00:00 0 
+8b4fb000-8b500000 ---p 00000000 00:00 0 
+8b500000-8b501000 rw-p 00000000 00:00 0 
+8b501000-8b504000 r--s 00000000 fd:01 234157     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/var/cache/fontconfig/2ec3fd9d-aacc-4b6c-9e55-d7218f0f1cdf-le32d8.cache-7
+8b504000-8b50e000 r--s 00000000 fd:01 234151     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/var/cache/fontconfig/fc272acc-86e7-44ac-b3c3-7028b66f7bc4-le32d8.cache-7
+8b50e000-8b51d000 r-xp 00000000 fd:01 253482     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libnet.so
+8b51d000-8b52c000 ---p 0000f000 fd:01 253482     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libnet.so
+8b52c000-8b52d000 r--p 0000e000 fd:01 253482     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libnet.so
+8b52d000-8b52e000 rw-p 0000f000 fd:01 253482     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libnet.so
+8b52e000-8b531000 ---p 00000000 00:00 0 
+8b531000-8b57e000 rw-p 00000000 00:00 0 
+8b57e000-8b57f000 ---p 00000000 00:00 0 
+8b57f000-8b600000 rw-p 00000000 00:00 0 
+8b600000-8b6ef000 rw-p 00000000 00:00 0 
+8b6ef000-8b700000 ---p 00000000 00:00 0 
+8b700000-8b701000 r-xp 00000000 fd:01 311884     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libX11-xcb.so.1.0.0
+8b701000-8b710000 ---p 00001000 fd:01 311884     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libX11-xcb.so.1.0.0
+8b710000-8b711000 r--p 00000000 fd:01 311884     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libX11-xcb.so.1.0.0
+8b711000-8b712000 rw-p 00001000 fd:01 311884     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libX11-xcb.so.1.0.0
+8b712000-8b71c000 r-xp 00000000 fd:01 253483     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libnio.so
+8b71c000-8b72c000 ---p 0000a000 fd:01 253483     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libnio.so
+8b72c000-8b72d000 r--p 0000a000 fd:01 253483     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libnio.so
+8b72d000-8b72e000 rw-p 0000b000 fd:01 253483     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libnio.so
+8b72e000-8b731000 ---p 00000000 00:00 0 
+8b731000-8b77e000 rw-p 00000000 00:00 0 
+8b77e000-8b77f000 ---p 00000000 00:00 0 
+8b77f000-8b800000 rw-p 00000000 00:00 0 
+8b800000-8b870000 rw-p 00000000 00:00 0 
+8b870000-8b900000 ---p 00000000 00:00 0 
+8b900000-8b901000 rw-p 00000000 00:00 0 
+8b901000-8b902000 r--s 00000000 fd:01 267846     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/var/cache/fontconfig/7e1140a8-8b63-4607-a875-2d2bfc195405-le32d8.cache-7
+8b902000-8b905000 r--s 00000000 fd:01 246061     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/var/cache/fontconfig/7990a712-9d72-4ec0-b865-b69d12583d74-le32d8.cache-7
+8b905000-8b906000 r-xp 00000000 fd:01 361730     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/jni/libglass.so
+8b906000-8b915000 ---p 00001000 fd:01 361730     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/jni/libglass.so
+8b915000-8b916000 r--p 00000000 fd:01 361730     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/jni/libglass.so
+8b916000-8b917000 rw-p 00001000 fd:01 361730     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/jni/libglass.so
+8b917000-8bc2e000 rw-p 00000000 00:00 0 
+8bc2e000-8c142000 ---p 00000000 00:00 0 
+8c142000-8c3fe000 rw-p 00000000 00:00 0 
+8c3fe000-8c912000 ---p 00000000 00:00 0 
+8c912000-8c96a000 rw-p 00000000 00:00 0 
+8c96a000-8ca0c000 ---p 00000000 00:00 0 
+8ca0c000-8ca64000 rw-p 00000000 00:00 0 
+8ca64000-8cb06000 ---p 00000000 00:00 0 
+8cb06000-8cb5e000 rw-p 00000000 00:00 0 
+8cb5e000-8cc00000 ---p 00000000 00:00 0 
+8cc00000-97b00000 rw-p 00000000 00:00 0 
+97b00000-ac000000 ---p 00000000 00:00 0 
+ac000000-ac0fe000 rw-p 00000000 00:00 0 
+ac0fe000-ac100000 ---p 00000000 00:00 0 
+ac100000-ac101000 r--s 00000000 fd:01 267834     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/var/cache/fontconfig/3b875841-e234-408b-8bb3-e5da4a4e8aea-le32d8.cache-7
+ac101000-ac103000 r--s 00000000 fd:01 284339     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/var/cache/fontconfig/6eb1c115-56d4-4b79-be96-c7a15ad6d7e1-le32d8.cache-7
+ac103000-ac104000 r--s 00000000 fd:01 255685     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/root/.cache/dconf/user
+ac104000-ac10e000 r--p 00000000 fd:01 305116     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/share/glib-2.0/schemas/gschemas.compiled
+ac10e000-ac10f000 r--p 00000000 fd:01 218298     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/locale/C.UTF-8/LC_NUMERIC
+ac10f000-ac12f000 rw-p 00000000 00:00 0 
+ac12f000-ac130000 ---p 00000000 00:00 0 
+ac130000-ac1ba000 rw-p 00000000 00:00 0 
+ac1ba000-ac1bb000 ---p 00000000 00:00 0 
+ac1bb000-ac249000 rw-p 00000000 00:00 0 
+ac249000-ac27c000 ---p 00000000 00:00 0 
+ac27c000-ac89c000 rwxp 00000000 00:00 0 
+ac89c000-ae27c000 ---p 00000000 00:00 0 
+ae27c000-ae281000 r-xp 00000000 fd:01 253491     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libzip.so
+ae281000-ae290000 ---p 00005000 fd:01 253491     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libzip.so
+ae290000-ae291000 r--p 00004000 fd:01 253491     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libzip.so
+ae291000-ae292000 rw-p 00005000 fd:01 253491     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libzip.so
+ae292000-ae400000 r--s 00000000 fd:01 253492     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/modules
+ae400000-ae4fa000 rw-p 00000000 00:00 0 
+ae4fa000-ae500000 ---p 00000000 00:00 0 
+ae500000-ae501000 r--p 00000000 fd:01 218303     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/locale/C.UTF-8/LC_TIME
+ae501000-ae502000 r--p 00000000 fd:01 218299     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/locale/C.UTF-8/LC_MONETARY
+ae502000-ae503000 r--p 00000000 fd:01 218309     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/locale/C.UTF-8/LC_MESSAGES/SYS_LC_MESSAGES
+ae503000-ae504000 r--p 00000000 fd:01 218305     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/locale/C.UTF-8/LC_PAPER
+ae504000-ae505000 r--p 00000000 fd:01 218307     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/locale/C.UTF-8/LC_NAME
+ae505000-ae506000 r--p 00000000 fd:01 218306     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/locale/C.UTF-8/LC_ADDRESS
+ae506000-ae507000 r--p 00000000 fd:01 218301     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/locale/C.UTF-8/LC_TELEPHONE
+ae507000-ae508000 r--p 00000000 fd:01 218302     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/locale/C.UTF-8/LC_MEASUREMENT
+ae508000-ae50f000 r-xp 00000000 fd:01 218264     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libnss_files-2.28.so
+ae50f000-ae51e000 ---p 00007000 fd:01 218264     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libnss_files-2.28.so
+ae51e000-ae51f000 r--p 00006000 fd:01 218264     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libnss_files-2.28.so
+ae51f000-ae520000 rw-p 00007000 fd:01 218264     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libnss_files-2.28.so
+ae520000-ae526000 rw-p 00000000 00:00 0 
+ae526000-ae529000 r-xp 00000000 fd:01 253474     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libjimage.so
+ae529000-ae538000 ---p 00003000 fd:01 253474     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libjimage.so
+ae538000-ae539000 r--p 00002000 fd:01 253474     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libjimage.so
+ae539000-ae53a000 rw-p 00003000 fd:01 253474     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libjimage.so
+ae53a000-ae552000 r-xp 00000000 fd:01 253471     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libjava.so
+ae552000-ae562000 ---p 00018000 fd:01 253471     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libjava.so
+ae562000-ae563000 r--p 00018000 fd:01 253471     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libjava.so
+ae563000-ae564000 rw-p 00019000 fd:01 253471     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libjava.so
+ae564000-ae56b000 r-xp 00000000 fd:01 253490     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libverify.so
+ae56b000-ae57b000 ---p 00007000 fd:01 253490     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libverify.so
+ae57b000-ae57c000 r--p 00007000 fd:01 253490     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libverify.so
+ae57c000-ae57d000 rw-p 00008000 fd:01 253490     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/libverify.so
+ae57d000-ae582000 r-xp 00000000 fd:01 215524     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/librt-2.28.so
+ae582000-ae591000 ---p 00005000 fd:01 215524     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/librt-2.28.so
+ae591000-ae592000 r--p 00004000 fd:01 215524     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/librt-2.28.so
+ae592000-ae593000 rw-p 00005000 fd:01 215524     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/librt-2.28.so
+ae593000-ae596000 ---p 00000000 00:00 0 
+ae596000-ae5e3000 rw-p 00000000 00:00 0 
+ae5e3000-ae64d000 r-xp 00000000 fd:01 217968     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libm-2.28.so
+ae64d000-ae65c000 ---p 0006a000 fd:01 217968     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libm-2.28.so
+ae65c000-ae65d000 r--p 00069000 fd:01 217968     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libm-2.28.so
+ae65d000-ae65e000 rw-p 0006a000 fd:01 217968     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libm-2.28.so
+ae65e000-ae751000 r-xp 00000000 fd:01 217979     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libstdc++.so.6.0.25
+ae751000-ae760000 ---p 000f3000 fd:01 217979     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libstdc++.so.6.0.25
+ae760000-ae765000 r--p 000f2000 fd:01 217979     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libstdc++.so.6.0.25
+ae765000-ae767000 rw-p 000f7000 fd:01 217979     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libstdc++.so.6.0.25
+ae767000-ae769000 rw-p 00000000 00:00 0 
+ae769000-aeea2000 r-xp 00000000 fd:01 253533     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/server/libjvm.so
+aeea2000-aeeb2000 ---p 00739000 fd:01 253533     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/server/libjvm.so
+aeeb2000-aeef3000 r--p 00739000 fd:01 253533     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/server/libjvm.so
+aeef3000-aef0c000 rw-p 0077a000 fd:01 253533     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/server/libjvm.so
+aef0c000-aef39000 rw-p 00000000 00:00 0 
+aef39000-af01d000 r-xp 00000000 fd:01 215421     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libc-2.28.so
+af01d000-af02d000 ---p 000e4000 fd:01 215421     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libc-2.28.so
+af02d000-af02f000 r--p 000e4000 fd:01 215421     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libc-2.28.so
+af02f000-af030000 rw-p 000e6000 fd:01 215421     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libc-2.28.so
+af030000-af033000 rw-p 00000000 00:00 0 
+af033000-af035000 r-xp 00000000 fd:01 217976     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libdl-2.28.so
+af035000-af044000 ---p 00002000 fd:01 217976     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libdl-2.28.so
+af044000-af045000 r--p 00001000 fd:01 217976     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libdl-2.28.so
+af045000-af046000 rw-p 00002000 fd:01 217976     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libdl-2.28.so
+af046000-af050000 r-xp 00000000 fd:01 253456     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/jli/libjli.so
+af050000-af05f000 ---p 0000a000 fd:01 253456     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/jli/libjli.so
+af05f000-af060000 r--p 00009000 fd:01 253456     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/jli/libjli.so
+af060000-af061000 rw-p 0000a000 fd:01 253456     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/jvm/java-11-openjdk-armhf/lib/jli/libjli.so
+af061000-af073000 r-xp 00000000 fd:01 217985     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libpthread-2.28.so
+af073000-af082000 ---p 00012000 fd:01 217985     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libpthread-2.28.so
+af082000-af083000 r--p 00011000 fd:01 217985     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libpthread-2.28.so
+af083000-af084000 rw-p 00012000 fd:01 217985     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libpthread-2.28.so
+af084000-af086000 rw-p 00000000 00:00 0 
+af086000-af099000 r-xp 00000000 fd:01 217924     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libz.so.1.2.11
+af099000-af0a8000 ---p 00013000 fd:01 217924     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libz.so.1.2.11
+af0a8000-af0a9000 r--p 00012000 fd:01 217924     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libz.so.1.2.11
+af0a9000-af0aa000 rw-p 00013000 fd:01 217924     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libz.so.1.2.11
+af0aa000-af0b1000 r--s 00000000 fd:01 218119     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/gconv/gconv-modules.cache
+af0b1000-af0b2000 r--p 00000000 fd:01 218310     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/locale/C.UTF-8/LC_IDENTIFICATION
+af0b2000-af0b4000 r--s 00007000 fd:01 254110     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/share/java/java-atk-wrapper.jar
+af0b4000-af0bc000 rw-s 00000000 fd:01 365144     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/tmp/hsperfdata_root/23954
+af0bc000-af0d4000 r-xp 00000000 fd:01 215388     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libgcc_s.so.1
+af0d4000-af0e3000 ---p 00018000 fd:01 215388     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libgcc_s.so.1
+af0e3000-af0e4000 r--p 00017000 fd:01 215388     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libgcc_s.so.1
+af0e4000-af0e5000 rw-p 00018000 fd:01 215388     /data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/debian-buster/usr/lib/arm-linux-gnueabihf/libgcc_s.so.1
+af0e5000-af0e6000 r--p 00000000 00:00 0 
+af0e6000-af0e8000 rw-p 00000000 00:00 0 
+be9d1000-be9f2000 rw-p 00000000 00:00 0          [stack]
+bee87000-bee88000 r-xp 00000000 00:00 0          [sigpage]
+bee88000-bee89000 r--p 00000000 00:00 0          [vvar]
+bee89000-bee8a000 r-xp 00000000 00:00 0          [vdso]
+ffff0000-ffff1000 r-xp 00000000 00:00 0          [vectors]
+
+
+VM Arguments:
+jvm_args: -Dhttps.protocols=TLSv1,TLSv1.1,TLSv1.2 -Djavafx.embed.singleThread=true -Dawt.useSystemAAFontSettings=on 
+java_command: bluej.Boot -javafxpath=/usr/share/openjfx
+java_class_path (initial): /root/workspace/bluej/lib/bluej.jar:/usr/share/openjfx/lib/javafx.base.jar:/usr/share/openjfx/lib/javafx.controls.jar:/usr/share/openjfx/lib/javafx.fxml.jar:/usr/share/openjfx/lib/javafx.graphics.jar:/usr/share/openjfx/lib/javafx.media.jar:/usr/share/openjfx/lib/javafx.properties.jar:/usr/share/openjfx/lib/javafx.swing.jar:/usr/share/openjfx/lib/javafx.web.jar
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     uint ConcGCThreads                            = 1                                         {product} {ergonomic}
+     uint G1ConcRefinementThreads                  = 4                                         {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 1048576                                   {product} {ergonomic}
+    uintx GCDrainStackTargetSize                   = 64                                        {product} {ergonomic}
+   size_t InitialHeapSize                          = 33554432                                  {product} {ergonomic}
+   size_t MarkStackSize                            = 32768                                     {product} {ergonomic}
+   size_t MaxHeapSize                              = 524288000                                 {product} {ergonomic}
+   size_t MaxNewSize                               = 314572800                                 {product} {ergonomic}
+   size_t MinHeapDeltaBytes                        = 1048576                                   {product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 0                                      {pd product} {ergonomic}
+    uintx ProfiledCodeHeapSize                     = 0                                      {pd product} {ergonomic}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags
+ #1: stderr all=off uptime,level,tags
+
+Environment Variables:
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/data/data/com.termux/files/usr/bin:/system/bin:/system/xbin
+SHELL=/bin/bash
+DISPLAY=:1
+LANG=C.UTF-8
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0x6a36b9], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGBUS: [libjvm.so+0x6a36b9], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGFPE: [libjvm.so+0x6a36b9], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGPIPE: SIG_IGN, sa_mask[0]=00000000000010000000000000000000, sa_flags=SA_RESTART
+SIGXFSZ: [libjvm.so+0x55d6e9], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGILL: [libjvm.so+0x6a36b9], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGUSR2: [libjvm.so+0x55d605], sa_mask[0]=00000000000000000000000000000000, sa_flags=SA_RESTART|SA_SIGINFO
+SIGHUP: [libjvm.so+0x55dca5], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGINT: [libjvm.so+0x55dca5], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGTERM: [libjvm.so+0x55dca5], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGQUIT: [libjvm.so+0x55dca5], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+
+
+---------------  S Y S T E M  ---------------
+
+OS:PRETTY_NAME="Debian GNU/Linux 10 (buster)"
+NAME="Debian GNU/Linux"
+VERSION_ID="10"
+VERSION="10 (buster)"
+VERSION_CODENAME=buster
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+uname:Linux 5.4.0-faked #68 SMP PREEMPT Wed Apr 18 16:42:55 CST 2018 armv7l
+OS uptime: 0 days 6:11 hours
+libc:glibc 2.28 NPTL 2.28 
+rlimit (soft/hard): STACK 8192k/infinity , CORE 0k/infinity , NPROC 15737/15737 , NOFILE 1024/1024 , AS infinity/infinity , CPU infinity/infinity , DATA infinity/infinity , FSIZE infinity/infinity , MEMLOCK 64k/64k
+load average:10.75 8.34 7.86
+
+/proc/meminfo:
+MemTotal:        2046428 kB
+MemFree:          100104 kB
+MemAvailable:     748776 kB
+Buffers:             252 kB
+Cached:           847340 kB
+SwapCached:        16448 kB
+Active:          1074268 kB
+Inactive:         566172 kB
+Active(anon):     674892 kB
+Inactive(anon):   252544 kB
+Active(file):     399376 kB
+Inactive(file):   313628 kB
+Unevictable:         292 kB
+Mlocked:             292 kB
+HighTotal:       1564672 kB
+HighFree:          41972 kB
+LowTotal:         481756 kB
+LowFree:           58132 kB
+SwapTotal:        520908 kB
+SwapFree:         302216 kB
+Dirty:              1224 kB
+Writeback:             4 kB
+AnonPages:        792416 kB
+Mapped:           518684 kB
+Shmem:            134500 kB
+Slab:              76820 kB
+SReclaimable:      41864 kB
+SUnreclaim:        34956 kB
+KernelStack:       11224 kB
+PageTables:        25208 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     1544120 kB
+Committed_AS:   35464884 kB
+VmallocTotal:     499712 kB
+VmallocUsed:           0 kB
+VmallocChunk:          0 kB
+CmaTotal:          16384 kB
+CmaFree:           11240 kB
+
+/sys/kernel/mm/transparent_hugepage/enabled:
+<Not Available>
+/sys/kernel/mm/transparent_hugepage/defrag (defrag/compaction efforts parameter):
+<Not Available>
+
+Process Memory:
+Virtual Size: 996512K (peak: 996608K)
+Resident Set Size: 238636K (peak: 351300K)
+Swapped out: 70972K
+
+[error occurred during error reporting (printing OS information), id 0xb, SIGSEGV (0xb) at pc=0xaef8b8aa]
+
+CPU:total 4 (initial active 4) (ARMv7), vfp, vfp3-32, simd, mp_ext
+
+/proc/cpuinfo:
+processor	: 0
+model name	: ARMv7 Processor rev 1 (v7l)
+BogoMIPS	: 94.52
+Features	: half thumb fastmult vfp edsp neon vfpv3 tls vfpv4 idiva idivt vfpd32 lpae evtstrm 
+CPU implementer	: 0x41
+CPU architecture: 7
+CPU variant	: 0x0
+CPU part	: 0xc0d
+CPU revision	: 1
+
+processor	: 1
+model name	: ARMv7 Processor rev 1 (v7l)
+BogoMIPS	: 94.52
+Features	: half thumb fastmult vfp edsp neon vfpv3 tls vfpv4 idiva idivt vfpd32 lpae evtstrm 
+CPU implementer	: 0x41
+CPU architecture: 7
+CPU variant	: 0x0
+CPU part	: 0xc0d
+CPU revision	: 1
+
+processor	: 2
+model name	: ARMv7 Processor rev 1 (v7l)
+BogoMIPS	: 94.52
+Features	: half thumb fastmult vfp edsp neon vfpv3 tls vfpv4 idiva idivt vfpd32 lpae evtstrm 
+CPU implementer	: 0x41
+CPU architecture: 7
+CPU variant	: 0x0
+CPU part	: 0xc0d
+CPU revision	: 1
+
+processor	: 3
+model name	: ARMv7 Processor rev 1 (v7l)
+BogoMIPS	: 94.52
+Features	: half thumb fastmult vfp edsp neon vfpv3 tls vfpv4 idiva idivt vfpd32 lpae evtstrm 
+CPU implementer	: 0x41
+CPU architecture: 7
+CPU variant	: 0x0
+CPU part	: 0xc0d
+CPU revision	: 1
+
+Hardware	: Rockchip (Device Tree)
+Revision	: 0000
+Serial		: c523a528b405d4f5
+Online cpus:
+0-3
+Offline cpus:
+
+
+Memory: 4k page, physical 2046428k(100228k free), swap 520908k(302220k free)
+
+vm_info: OpenJDK Server VM (11.0.11+9-post-Debian-1deb10u1) for linux- JRE (11.0.11+9-post-Debian-1deb10u1), built on Apr 21 2021 15:55:49 by "unknown" with gcc 8.3.0
+
+END.

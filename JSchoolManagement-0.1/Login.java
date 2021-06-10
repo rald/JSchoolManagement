@@ -31,16 +31,14 @@ public class Login extends JFrame
 
     void initGUI() {
         
-        setTitle("JFrame");
+        setTitle("Login");
         
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        setSize(416,180);
+        setSize(424,184);
         
         setResizable(false);
-        
-        setLocationRelativeTo(null);
-        
+                
         setLayout(null);
         
         lbluser=new JLabel("Username");
@@ -63,6 +61,8 @@ public class Login extends JFrame
         add(txtuser); 
         add(txtpass);
         add(btnok);
+        
+        setLocationRelativeTo(null);
         
         setVisible(true);
 
