@@ -16,8 +16,7 @@ import javax.swing.event.*;
 import javax.swing.table.*;
 import java.sql.*;
 
-public class StudentMain extends JFrame
-{
+public class StudentMain extends JFrame {
     
     JLabel lblusername;
     JLabel lblusertype; 

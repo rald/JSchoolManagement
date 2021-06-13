@@ -63,8 +63,7 @@ public class UserCreation extends JDialog {
     /**
      * Constructor for objects of class User
      */
-    UserCreation()
-    {
+    UserCreation() {
         initGUI(); 
         connect();
         userLoad();

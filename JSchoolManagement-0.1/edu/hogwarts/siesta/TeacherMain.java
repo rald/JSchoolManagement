@@ -15,8 +15,7 @@ import javax.swing.event.*;
 import javax.swing.table.*;
 import java.sql.*;
 
-public class TeacherMain extends JFrame
-{
+public class TeacherMain extends JFrame {
     
     JLabel lblUserName;
     JLabel lblUserType; 

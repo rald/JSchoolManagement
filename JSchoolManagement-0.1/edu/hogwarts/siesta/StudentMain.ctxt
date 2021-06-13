@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=StudentMain
+comment1.params=id\ user_name\ user_type
+comment1.target=StudentMain(int,\ java.lang.String,\ java.lang.String)
+comment2.params=id\ user_name\ user_type
+comment2.target=void\ initGUI(int,\ java.lang.String,\ java.lang.String)
+numComments=3

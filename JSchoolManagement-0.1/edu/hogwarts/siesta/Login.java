@@ -15,8 +15,7 @@ import javax.swing.event.*;
 import javax.swing.table.*;
 import java.sql.*;
 
-public class Login extends JFrame
-{
+public class Login extends JFrame {
 
     private JLabel lblUserName;
     private JLabel lblPassWord;
@@ -35,25 +34,19 @@ public class Login extends JFrame
     /**
      * Constructor for objects of class Login
      */
-    public Login()
-    {
+    public Login() {
         // initialise instance variables        
         initGUI();
         connect();
     }
 
     public void connect() {
-        try
-        {
+        try {
             Class.forName("org.mariadb.jdbc.Driver");
             con=DriverManager.getConnection("jdbc:mariadb://localhost/JSchoolManagement","root","alohomora");
-        }
-        catch (ClassNotFoundException cnfe)
-        {
+        } catch (ClassNotFoundException cnfe) {
             cnfe.printStackTrace();
-        }
-        catch (SQLException sqle)
-        {
+        } catch (SQLException sqle) {
             sqle.printStackTrace();
         }
     }
@@ -92,8 +85,7 @@ public class Login extends JFrame
             
         } else {
 
-            try
-            {
+            try {
                 pst = con.prepareStatement("select * from user where user_name=? and user_pass=?");
 
                 pst.setString(1,userName);
@@ -122,9 +114,7 @@ public class Login extends JFrame
                     JOptionPane.showMessageDialog(this,"Access denied");
                 }
 
-            }
-            catch (SQLException sqle)
-            {
+            } catch (SQLException sqle) {
                 sqle.printStackTrace();
             }
         }

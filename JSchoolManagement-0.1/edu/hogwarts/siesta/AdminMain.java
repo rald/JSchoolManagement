@@ -15,8 +15,7 @@ import javax.swing.event.*;
 import javax.swing.table.*;
 import java.sql.*;
 
-public class AdminMain extends JFrame
-{
+public class AdminMain extends JFrame {
 
     int userId;
     String userName;
