@@ -33,6 +33,7 @@ public class UserCreation extends JDialog {
     JTextField txtUserName;
     JPasswordField txtPassWord;
     JComboBox cboUserType;
+
     JTable tblUser;
     JScrollPane spUser;
 
@@ -42,7 +43,7 @@ public class UserCreation extends JDialog {
     JButton btnClear;
     JButton btnClose;
 
-    String[] userTypes = {"Admin","Teacher","Student"};
+    String[] userTypes = {"Admin","Teacher"};
 
     String[] tableColumnNames={"ID","Firstname","Lastname","Phone","Address","Username","Usertype"};
 
@@ -51,7 +52,7 @@ public class UserCreation extends JDialog {
     ResultSet rs;
     DefaultTableModel d;
 
-    String userId;
+    int userId;
     String userFirstName;
     String userLastName;
     String userPhone;
@@ -95,7 +96,7 @@ public class UserCreation extends JDialog {
             while(rs.next()) {
                 Vector v=new Vector();
                 for(int i=0;i<c;i++) {
-                    v.add(rs.getString("user_id"));
+                    v.add(rs.getInt("user_id"));
                     v.add(rs.getString("user_firstname"));
                     v.add(rs.getString("user_lastname"));
                     v.add(rs.getString("user_phone"));
@@ -131,7 +132,7 @@ public class UserCreation extends JDialog {
         userAddress = txtAddress.getText();
         userName = txtUserName.getText();
         userPass = txtPassWord.getText();
-        int user_type_index = cboUserType.getSelectedIndex();
+        int userTypeIndex = cboUserType.getSelectedIndex();
 
         if(userFirstName.isEmpty()) {
             JOptionPane.showMessageDialog(this,"Firstname is empty");
@@ -169,7 +170,7 @@ public class UserCreation extends JDialog {
             return false;
         }
 
-        if(user_type_index==-1) {
+        if(userTypeIndex==-1) {
             JOptionPane.showMessageDialog(this,"Please choose a usertype");
             cboUserType.requestFocus();
             return false;
@@ -216,14 +217,14 @@ public class UserCreation extends JDialog {
         }
 
         d=(DefaultTableModel)tblUser.getModel();
-        int selectedIndex=tblUser.getSelectedRow();
+        int selectedRowIndex=tblUser.getSelectedRow();
 
-        if(selectedIndex==-1) {
+        if(selectedRowIndex==-1) {
             JOptionPane.showMessageDialog(this,"Please select a user");    
             return;
         }  
 
-        userId=d.getValueAt(selectedIndex,0).toString();
+        userId=(int)d.getValueAt(selectedRowIndex,0);
 
         if(!isValidUserForm()) return;
 
@@ -237,7 +238,7 @@ public class UserCreation extends JDialog {
             pst.setString(5,userName);
             pst.setString(6,userPass);
             pst.setString(7,userType);
-            pst.setString(8,userId);
+            pst.setInt(8,userId);
 
             pst.executeUpdate();
 
@@ -262,22 +263,22 @@ public class UserCreation extends JDialog {
         }
 
         d=(DefaultTableModel)tblUser.getModel();
-        int selectedIndex=tblUser.getSelectedRow();
+        int selectedRowIndex=tblUser.getSelectedRow();
 
-        if(selectedIndex==-1) {
+        if(selectedRowIndex==-1) {
             JOptionPane.showMessageDialog(this,"Please select a user");    
             return;
         }
 
-        String id=d.getValueAt(selectedIndex,0).toString();
+        userId=(int)d.getValueAt(selectedRowIndex,0);
 
-        if (JOptionPane.showConfirmDialog(null, "Are you sure to remove user?", "WARNING",
+        if (JOptionPane.showConfirmDialog(null, "Are you sure to remove the selected user?", "WARNING",
             JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 
             try {
                 pst = con.prepareStatement("delete from user where user_id=?");
 
-                pst.setString(1,id);
+                pst.setInt(1,userId);
 
                 pst.executeUpdate();
 
@@ -288,6 +289,7 @@ public class UserCreation extends JDialog {
                 btnAdd.setEnabled(true);
 
                 JOptionPane.showMessageDialog(this,"User removed");
+                
             } catch (SQLException sqle) {
                 sqle.printStackTrace();
             }
@@ -310,14 +312,14 @@ public class UserCreation extends JDialog {
 
     public void tblUserMouseClicked(MouseEvent e) {
         d=(DefaultTableModel)tblUser.getModel();
-        int selectedIndex=tblUser.getSelectedRow();
-        String id=d.getValueAt(selectedIndex,0).toString();
+        int selectedRowIndex=tblUser.getSelectedRow();
+        userId=(int)d.getValueAt(selectedRowIndex,0);
 
         int c;
         try {
             pst=con.prepareStatement("select * from user where user_id=?");
 
-            pst.setString(1,id);
+            pst.setInt(1,userId);
 
             rs=pst.executeQuery();
 
@@ -341,11 +343,11 @@ public class UserCreation extends JDialog {
     }
 
     public void initGUI() {
-        
+
         setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-        
-        setTitle("User Creation");
-        
+
+        setTitle("User");
+
         setSize(640,640);
 
         setLayout(null);
@@ -464,11 +466,12 @@ public class UserCreation extends JDialog {
                 } 
             });
 
-        setLocationRelativeTo(null);
         clearUserForm();
-        
+
+        setLocationRelativeTo(null);   
+
         setVisible(true);
-        
+
         setModal(true);
 
     }

@@ -106,9 +106,7 @@ public class Login extends JFrame {
                         new AdminMain(userId,userFirstName,userType); 
                     } else if(userType.equals("Teacher")) {
                         new TeacherMain(userId,userFirstName,userType); 
-                    } else if(userType.equals("Student")) {
-                        new StudentMain(userId,userFirstName,userType); 
-                    }
+                    } 
 
                 } else {
                     JOptionPane.showMessageDialog(this,"Access denied");

@@ -25,7 +25,8 @@ public class AdminMain extends JFrame {
     JLabel lblUserType; 
 
     JButton btnUserCreation;
-    JButton btnClasses;
+    JButton btnClassCreation;
+    JButton btnSubjectCreation;
 
     AdminMain(int userId,String userName,String userType) {
         initGUI(userId,userName,userType);
@@ -34,14 +35,18 @@ public class AdminMain extends JFrame {
     public void btnUserCreationActionPerformed(ActionEvent e) {
         new UserCreation();
     }
-    
-    public void btnClassesActionPerformed(ActionEvent e) {
-        new Classes();
+
+    public void btnClassCreationActionPerformed(ActionEvent e) {
+        new ClassCreation();
+    }
+
+    public void btnSubjectCreationActionPerformed(ActionEvent e) {
+        new SubjectCreation();
     }
 
     public void initGUI(int userId,String userName,String userType) {
-        setTitle("Principal");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setTitle("Admin");
         setSize(640,480);
         setResizable(false);
         setLayout(null);
@@ -53,20 +58,23 @@ public class AdminMain extends JFrame {
         lblUserName=new JLabel(userName);
         lblUserType=new JLabel(userType);
 
-        btnUserCreation=new JButton("User Creation");
-        btnClasses=new JButton("Class");
+        btnUserCreation=new JButton("User");
+        btnClassCreation=new JButton("Class");
+        btnSubjectCreation=new JButton("Subject");
 
         lblUserName.setBounds(16,16,128,32);
         lblUserType.setBounds(16,48,128,32);
 
-        btnUserCreation.setBounds(16,112,174,32);
-        btnClasses.setBounds(16,160,174,32);
+        btnUserCreation.setBounds(16,112,128,32);
+        btnClassCreation.setBounds(16,160,128,32);
+        btnSubjectCreation.setBounds(16,208,128,32);
 
         add(lblUserName);
         add(lblUserType);
 
         add(btnUserCreation);
-        add(btnClasses);
+        add(btnClassCreation);
+        add(btnSubjectCreation);
 
         btnUserCreation.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
@@ -74,9 +82,15 @@ public class AdminMain extends JFrame {
                 }    
             });
 
-        btnClasses.addActionListener(new ActionListener() {
+        btnClassCreation.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    btnClassesActionPerformed(e);
+                    btnClassCreationActionPerformed(e);
+                }    
+            });
+
+        btnSubjectCreation.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    btnSubjectCreationActionPerformed(e);
                 }    
             });
 
