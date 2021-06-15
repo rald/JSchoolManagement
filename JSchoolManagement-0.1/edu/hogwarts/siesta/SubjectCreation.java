@@ -29,7 +29,7 @@ public class SubjectCreation extends JDialog {
     JButton btnRemove;
     JButton btnClear;
     JButton btnClose;
-    
+
     String[] subjectTableColumnNames={"ID","Subject Name"};
 
     String subjectName;
@@ -98,7 +98,7 @@ public class SubjectCreation extends JDialog {
             txtSubjectName.requestFocus();
             return false;
         }
-        
+
         return true;
     }
 
@@ -110,7 +110,7 @@ public class SubjectCreation extends JDialog {
             pst = con.prepareStatement("insert into subject(subject_name) values(?)");
 
             pst.setString(1,subjectName);
-           
+
             pst.executeUpdate();
 
             clearSubjectForm();
@@ -200,7 +200,7 @@ public class SubjectCreation extends JDialog {
                 btnAdd.setEnabled(true);
 
                 JOptionPane.showMessageDialog(this,"Subject removed");
-                
+
             } catch (SQLException sqle) {
                 sqle.printStackTrace();
             }
@@ -210,7 +210,7 @@ public class SubjectCreation extends JDialog {
         }
 
     } 
-    
+
     public void btnClearActionPerformed(ActionEvent e) { 
         clearSubjectForm();
         subjectLoad();
@@ -221,7 +221,8 @@ public class SubjectCreation extends JDialog {
         dispose();
     }
 
-    public void tblSubjectMouseClicked(MouseEvent e) {
+    public void tblSubjectMouseReleased(MouseEvent e) {
+        
         d=(DefaultTableModel)tblSubject.getModel();
         int selectedIndex=tblSubject.getSelectedRow();
         subjectId=(int)d.getValueAt(selectedIndex,0);
@@ -258,14 +259,16 @@ public class SubjectCreation extends JDialog {
         setLayout(null);
 
         lblSubjectName=new JLabel("Subject");
-       
+
         txtSubjectName=new JTextField();
-        
+
         tblSubject=new JTable(new DefaultTableModel(subjectTableColumnNames,subjectTableColumnNames.length) {
                 public boolean isCellEditable(int row, int column) {
                     return false;
                 }
-            }); 
+            });
+
+        tblSubject.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         spSubject=new JScrollPane(tblSubject);  
 
@@ -276,9 +279,9 @@ public class SubjectCreation extends JDialog {
         btnClose=new JButton("Close");
 
         lblSubjectName.setBounds(16,16,128,32);
-        
+
         txtSubjectName.setBounds(160,16,256,32);
-        
+
         spSubject.setBounds(16,400,600,200);        
 
         btnAdd.setBounds(16,352,96,32);
@@ -288,9 +291,9 @@ public class SubjectCreation extends JDialog {
         btnClose.setBounds(464,352,96,32);        
 
         add(lblSubjectName);
-       
+
         add(txtSubjectName);
-      
+
         add(spSubject);
 
         add(btnAdd);
@@ -330,8 +333,8 @@ public class SubjectCreation extends JDialog {
             });
 
         tblSubject.addMouseListener(new MouseAdapter() {
-                public void mouseClicked(MouseEvent e) {
-                    tblSubjectMouseClicked(e);                    
+                public void mouseReleased(MouseEvent e) {
+                    tblSubjectMouseReleased(e);                    
                 } 
             });
 

@@ -31,11 +31,11 @@ public class ClassCreation extends JDialog {
     JButton btnRemove;
     JButton btnClear;
     JButton btnClose;
-    
+
     String[] classNames={"1","2","3","4","5","6","7","8","9","10","11","12","13"};
 
     String[] sectionNames={"A","B","C","D","E"};
-    
+
     String[] classTableColumnNames={"ID","Class Name","Section"};
 
     String className;
@@ -121,9 +121,33 @@ public class ClassCreation extends JDialog {
         return true;
     }
 
+    public boolean isValidClass() {
+        try
+        {
+            pst=con.prepareStatement("select * from class where class_name=? and class_section=?");
+            pst.setString(1,className);
+            pst.setString(2,classSection);
+            rs=pst.executeQuery();
+           
+            if(rs.next()) {
+                JOptionPane.showMessageDialog(this,"Class already exists");
+                return false;
+            }  
+            
+        }
+        catch (SQLException sqle)
+        {
+            sqle.printStackTrace();
+        }
+
+        return true;
+    }
+
     public void btnAddActionPerformed(ActionEvent e) {
 
         if(!isValidClassForm()) return;
+
+        if(!isValidClass()) return;
 
         try {
             pst = con.prepareStatement("insert into class(class_name,class_section) values(?,?)");
@@ -163,6 +187,8 @@ public class ClassCreation extends JDialog {
         classId=(int)d.getValueAt(selectedRowIndex,0);
 
         if(!isValidClassForm()) return;
+
+        if(!isValidClass()) return;
 
         try {
             pst = con.prepareStatement("update class set class_name=?,class_section=? where class_id=?");
@@ -230,7 +256,7 @@ public class ClassCreation extends JDialog {
         }
 
     } 
-    
+
     public void btnClearActionPerformed(ActionEvent e) { 
         clearClassForm();
         classLoad();
@@ -241,7 +267,7 @@ public class ClassCreation extends JDialog {
         dispose();
     }
 
-    public void tblClassMouseClicked(MouseEvent e) {
+    public void tblClassMouseReleased(MouseEvent e) {
         d=(DefaultTableModel)tblClass.getModel();
         int selectedRowIndex=tblClass.getSelectedRow();
         classId=(int)d.getValueAt(selectedRowIndex,0);
@@ -289,6 +315,8 @@ public class ClassCreation extends JDialog {
                     return false;
                 }
             }); 
+
+        tblClass.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         spClass=new JScrollPane(tblClass);  
 
@@ -357,8 +385,8 @@ public class ClassCreation extends JDialog {
             });
 
         tblClass.addMouseListener(new MouseAdapter() {
-                public void mouseClicked(MouseEvent e) {
-                    tblClassMouseClicked(e);                    
+                public void mouseReleased(MouseEvent e) {
+                    tblClassMouseReleased(e);                    
                 } 
             });
 

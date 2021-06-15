@@ -310,7 +310,8 @@ public class UserCreation extends JDialog {
         dispose();
     }
 
-    public void tblUserMouseClicked(MouseEvent e) {
+    public void tblUserMouseReleased(MouseEvent e) {
+        
         d=(DefaultTableModel)tblUser.getModel();
         int selectedRowIndex=tblUser.getSelectedRow();
         userId=(int)d.getValueAt(selectedRowIndex,0);
@@ -373,6 +374,8 @@ public class UserCreation extends JDialog {
                     return false;
                 }
             }); 
+              
+        tblUser.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         spUser=new JScrollPane(tblUser);  
 
@@ -461,8 +464,8 @@ public class UserCreation extends JDialog {
             });
 
         tblUser.addMouseListener(new MouseAdapter() {
-                public void mouseClicked(MouseEvent e) {
-                    tblUserMouseClicked(e);                    
+                public void mouseReleased(MouseEvent e) {
+                    tblUserMouseReleased(e);                    
                 } 
             });
 
