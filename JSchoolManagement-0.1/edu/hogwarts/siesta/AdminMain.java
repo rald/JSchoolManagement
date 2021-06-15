@@ -1,4 +1,5 @@
 
+
 /**
  * Write a description of class User here.
  *
@@ -55,7 +56,7 @@ public class AdminMain extends JFrame {
         this.userName=userName;
         this.userType=userType;
 
-        lblUserName=new JLabel(userName);
+        lblUserName=new JLabel(userName);        
         lblUserType=new JLabel(userType);
 
         btnUserCreation=new JButton("User");
@@ -68,6 +69,8 @@ public class AdminMain extends JFrame {
         btnUserCreation.setBounds(16,112,128,32);
         btnClassCreation.setBounds(16,160,128,32);
         btnSubjectCreation.setBounds(16,208,128,32);
+
+        lblUserName.setSize(lblUserName.getPreferredSize());
 
         add(lblUserName);
         add(lblUserType);

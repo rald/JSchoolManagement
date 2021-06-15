@@ -31,7 +31,7 @@ public class TeacherMain extends JFrame {
     
     public void initGUI(int userId,String userName,String userType) {
         
-        setTitle("Teacher Main");
+        setTitle("Teacher");
         
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
@@ -51,6 +51,8 @@ public class TeacherMain extends JFrame {
         
         lblUserName.setBounds(16,16,128,32);
         lblUserType.setBounds(16,48,128,32);
+        
+        lblUserName.setSize(lblUserName.getPreferredSize());
         
         btnTeacher.setBounds(16,112,128,32);
         btnStudent.setBounds(16,160,128,32);

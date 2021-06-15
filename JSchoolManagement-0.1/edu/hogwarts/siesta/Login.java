@@ -71,20 +71,27 @@ public class Login extends JFrame {
         return true;
     }
 
+    public void loginAsAdmin(int userId,String userName,String userType) {
+        new AdminMain(userId,userName,userType);
+    }
+
+    public void loginAsTeacher(int userId,String userName,String userType) {
+        new TeacherMain(userId,userName,userType);
+    }
+
     public void btnOKActionPerformed(ActionEvent e) {
 
         if(!isValidLoginForm()) return;
 
         if(userName.equals("admin") && userPassWord.equals("admin")) {
-            
             setVisible(false);
-
             JOptionPane.showMessageDialog(this,"Access granted");
-
-            new AdminMain(0,"Admin","Admin");
-            
+            loginAsAdmin(0,"Admin","Admin");
+        } else if(userName.equals("teacher") && userPassWord.equals("teacher")) {
+            setVisible(false);
+            JOptionPane.showMessageDialog(this,"Access granted");           
+            loginAsTeacher(0,"Teacher","Teacher");
         } else {
-
             try {
                 pst = con.prepareStatement("select * from user where user_name=? and user_pass=?");
 
@@ -96,16 +103,17 @@ public class Login extends JFrame {
                 if(rs.next()) {
                     int userId = rs.getInt("user_id");
                     String userFirstName = rs.getString("user_firstname");
+                    String userLastName = rs.getString("user_lastname");
                     String userType = rs.getString("user_type");
 
-                    setVisible(false);
-
-                    JOptionPane.showMessageDialog(this,"Access granted");
-
                     if(userType.equals("Admin")) {
-                        new AdminMain(userId,userFirstName,userType); 
+                        setVisible(false);
+                        JOptionPane.showMessageDialog(this,"Access granted");
+                        loginAsAdmin(userId,userFirstName+" "+userLastName,userType); 
                     } else if(userType.equals("Teacher")) {
-                        new TeacherMain(userId,userFirstName,userType); 
+                        setVisible(false);
+                        JOptionPane.showMessageDialog(this,"Access granted");
+                        loginAsTeacher(userId,userFirstName+" "+userLastName,userType); 
                     } 
 
                 } else {
