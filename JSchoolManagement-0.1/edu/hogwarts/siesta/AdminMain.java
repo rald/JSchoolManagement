@@ -1,5 +1,4 @@
 
-
 /**
  * Write a description of class User here.
  *
@@ -28,6 +27,7 @@ public class AdminMain extends JFrame {
     JButton btnUserCreation;
     JButton btnClassCreation;
     JButton btnSubjectCreation;
+    JButton btnExamCreation;
 
     AdminMain(int userId,String userName,String userType) {
         initGUI(userId,userName,userType);
@@ -43,6 +43,10 @@ public class AdminMain extends JFrame {
 
     public void btnSubjectCreationActionPerformed(ActionEvent e) {
         new SubjectCreation();
+    }
+
+    public void btnExamCreationActionPerformed(ActionEvent e) {
+        new ExamCreation();
     }
 
     public void initGUI(int userId,String userName,String userType) {
@@ -62,6 +66,7 @@ public class AdminMain extends JFrame {
         btnUserCreation=new JButton("User");
         btnClassCreation=new JButton("Class");
         btnSubjectCreation=new JButton("Subject");
+        btnExamCreation=new JButton("Exam");
 
         lblUserName.setBounds(16,16,128,32);
         lblUserType.setBounds(16,48,128,32);
@@ -69,6 +74,7 @@ public class AdminMain extends JFrame {
         btnUserCreation.setBounds(16,112,128,32);
         btnClassCreation.setBounds(16,160,128,32);
         btnSubjectCreation.setBounds(16,208,128,32);
+        btnExamCreation.setBounds(16,256,128,32);
 
         lblUserName.setSize(lblUserName.getPreferredSize());
 
@@ -78,6 +84,7 @@ public class AdminMain extends JFrame {
         add(btnUserCreation);
         add(btnClassCreation);
         add(btnSubjectCreation);
+        add(btnExamCreation);
 
         btnUserCreation.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
@@ -94,6 +101,12 @@ public class AdminMain extends JFrame {
         btnSubjectCreation.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     btnSubjectCreationActionPerformed(e);
+                }    
+            });
+
+        btnExamCreation.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    btnExamCreationActionPerformed(e);
                 }    
             });
 
