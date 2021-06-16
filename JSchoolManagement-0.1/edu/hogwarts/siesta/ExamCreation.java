@@ -250,6 +250,7 @@ public class ExamCreation extends JDialog {
             clearExamForm();
 
             JOptionPane.showMessageDialog(this,"Exam added");
+            
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         }
@@ -383,6 +384,7 @@ public class ExamCreation extends JDialog {
                 try {
                     SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd");
                     examDate=df.parse(rs.getString("exam_date"));
+                    dteExamDate.setDate(examDate);
                 } catch (ParseException pe) {
                     pe.printStackTrace();
                 }
@@ -393,7 +395,7 @@ public class ExamCreation extends JDialog {
 
                 txtExamName.setText(examName);
                 cboExamTerm.setSelectedItem(examTerm);
-                dteExamDate.setDate(examDate);
+                
 
                 cboExamClassNameItemStateChangeActive=false;
 
