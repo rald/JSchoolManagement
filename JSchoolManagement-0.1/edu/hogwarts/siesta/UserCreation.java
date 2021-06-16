@@ -82,28 +82,24 @@ public class UserCreation extends JDialog {
     }
 
     public void userLoad() {
-        int c;
         try {
             pst=con.prepareStatement("select * from user");
 
             rs=pst.executeQuery();
-
-            ResultSetMetaData rsd=rs.getMetaData();
-            c=rsd.getColumnCount();
+            
             d=(DefaultTableModel)tblUser.getModel();
             d.setRowCount(0);
 
             while(rs.next()) {
                 Vector v=new Vector();
-                for(int i=0;i<c;i++) {
-                    v.add(rs.getInt("user_id"));
-                    v.add(rs.getString("user_firstname"));
-                    v.add(rs.getString("user_lastname"));
-                    v.add(rs.getString("user_phone"));
-                    v.add(rs.getString("user_address"));
-                    v.add(rs.getString("user_name"));
-                    v.add(rs.getString("user_type"));
-                }
+
+                v.add(rs.getInt("user_id"));
+                v.add(rs.getString("user_firstname"));
+                v.add(rs.getString("user_lastname"));
+                v.add(rs.getString("user_phone"));
+                v.add(rs.getString("user_address"));
+                v.add(rs.getString("user_name"));
+                v.add(rs.getString("user_type"));
 
                 d.addRow(v);
             }
@@ -289,7 +285,7 @@ public class UserCreation extends JDialog {
                 btnAdd.setEnabled(true);
 
                 JOptionPane.showMessageDialog(this,"User removed");
-                
+
             } catch (SQLException sqle) {
                 sqle.printStackTrace();
             }
@@ -311,7 +307,7 @@ public class UserCreation extends JDialog {
     }
 
     public void tblUserMouseReleased(MouseEvent e) {
-        
+
         d=(DefaultTableModel)tblUser.getModel();
         int selectedRowIndex=tblUser.getSelectedRow();
         userId=(int)d.getValueAt(selectedRowIndex,0);
@@ -374,7 +370,7 @@ public class UserCreation extends JDialog {
                     return false;
                 }
             }); 
-              
+
         tblUser.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         spUser=new JScrollPane(tblUser);  

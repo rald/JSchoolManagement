@@ -58,23 +58,19 @@ public class SubjectCreation extends JDialog {
     }
 
     public void subjectLoad() {
-        int c;
         try {
             pst=con.prepareStatement("select * from subject");
 
             rs=pst.executeQuery();
 
-            ResultSetMetaData rsd=rs.getMetaData();
-            c=rsd.getColumnCount();
             d=(DefaultTableModel)tblSubject.getModel();
             d.setRowCount(0);
 
             while(rs.next()) {
                 Vector v=new Vector();
-                for(int i=0;i<c;i++) {
-                    v.add(rs.getInt("subject_id"));
-                    v.add(rs.getString("subject_name"));
-                }
+
+                v.add(rs.getInt("subject_id"));
+                v.add(rs.getString("subject_name"));
 
                 d.addRow(v);
             }
@@ -222,7 +218,7 @@ public class SubjectCreation extends JDialog {
     }
 
     public void tblSubjectMouseReleased(MouseEvent e) {
-        
+
         d=(DefaultTableModel)tblSubject.getModel();
         int selectedIndex=tblSubject.getSelectedRow();
         subjectId=(int)d.getValueAt(selectedIndex,0);

@@ -14,6 +14,7 @@ import java.util.*;
 import javax.swing.*;
 import javax.swing.event.*;
 import javax.swing.table.*;
+import java.text.*;
 
 import com.toedter.calendar.JDateChooser;
 
@@ -22,16 +23,18 @@ public class ExamCreation extends JDialog {
     JLabel lblExamName;
     JLabel lblExamTerm;
     JLabel lblExamDate;
-    JLabel lblExamClass;
-    JLabel lblExamSection;
+    JLabel lblExamClassName;
+    JLabel lblExamClassSection;
     JLabel lblExamSubject;
 
     JTextField txtExamName;
     JComboBox cboExamTerm;
     JDateChooser dteExamDate;
-    JComboBox cboExamClass;
-    JComboBox cboExamSection;
+    JComboBox cboExamClassName;
+    JComboBox cboExamClassSection;
     JComboBox cboExamSubject;
+
+    boolean cboExamClassNameItemStateChangeActive=false;
 
     JTable tblExam;
     JScrollPane spExam;
@@ -49,8 +52,8 @@ public class ExamCreation extends JDialog {
     String examName;
     String examTerm;
     java.util.Date examDate;
-    String examClass;
-    String examSection;
+    String examClassName;
+    String examClassSection;
     String examSubject;
     int examId;
 
@@ -61,8 +64,9 @@ public class ExamCreation extends JDialog {
 
     public ExamCreation() {
         initGUI();
-        connect();
-        examLoad();
+        connect(); 
+        clearExamForm();
+        cboExamClassNameItemStateChangeActive=true;
     }
 
     public void connect() {
@@ -77,24 +81,24 @@ public class ExamCreation extends JDialog {
     }
 
     public void examLoad() {
-        int c;
+
         try {
             pst=con.prepareStatement("select * from exam");
 
             rs=pst.executeQuery();
 
-            ResultSetMetaData rsd=rs.getMetaData();
-            c=rsd.getColumnCount();
             d=(DefaultTableModel)tblExam.getModel();
             d.setRowCount(0);
 
             while(rs.next()) {
                 Vector v=new Vector();
-                for(int i=0;i<c;i++) {
-                    v.add(rs.getInt("exam_id"));
-                    v.add(rs.getString("exam_name"));
-                }
-
+                v.add(rs.getInt("exam_id"));
+                v.add(rs.getString("exam_name"));
+                v.add(rs.getString("exam_term"));
+                v.add(rs.getString("exam_date"));
+                v.add(rs.getString("exam_class_name"));
+                v.add(rs.getString("exam_class_section"));
+                v.add(rs.getString("exam_subject"));
                 d.addRow(v);
             }
 
@@ -106,12 +110,13 @@ public class ExamCreation extends JDialog {
 
     public void classLoad() {
         try {
+            cboExamClassName.removeAllItems();
             pst = con.prepareStatement("select distinct class_name from class");
             rs = pst.executeQuery();
-            cboExamClass.removeAllItems();
             while(rs.next()) {
-                cboExamClass.addItem(rs.getString("class_name"));
+                cboExamClassName.addItem(rs.getString("class_name"));
             }
+            cboExamClassName.setSelectedIndex(-1);
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         }               
@@ -119,61 +124,132 @@ public class ExamCreation extends JDialog {
 
     public void sectionLoad() {
         try {
-            pst = con.prepareStatement("select distinct class_section from class");
-            rs = pst.executeQuery();
-            cboExamSection.removeAllItems();
-            while(rs.next()) {
-                cboExamSection.addItem(rs.getString("class_section"));
+            cboExamClassSection.removeAllItems();
+            if(cboExamClassName.getSelectedIndex()==-1) {
+                return;
             }
+            examClassName=cboExamClassName.getSelectedItem().toString();
+            if(examClassName.isEmpty()) {
+                return;
+            }
+            pst = con.prepareStatement("select distinct class_section from class where class_name=?");
+            pst.setString(1,examClassName);
+            rs = pst.executeQuery();      
+            while(rs.next()) {
+                cboExamClassSection.addItem(rs.getString("class_section"));
+            }
+            cboExamClassSection.setSelectedIndex(-1);
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         }                   
     }
 
     public void subjectLoad() {
-
+        try {
+            cboExamSubject.removeAllItems();
+            pst = con.prepareStatement("select distinct subject_name from subject");
+            rs = pst.executeQuery();
+            while(rs.next()) {
+                cboExamSubject.addItem(rs.getString("subject_name"));
+            }
+            cboExamSubject.setSelectedIndex(-1);
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+        }          
     }
 
     public void clearExamForm() { 
         txtExamName.setText("");
         cboExamTerm.setSelectedIndex(-1);
         dteExamDate.setCalendar(null);
-        cboExamClass.setSelectedIndex(-1);
-        cboExamSection.setSelectedIndex(-1);
-        cboExamSubject.setSelectedIndex(-1);
-
         txtExamName.requestFocus();
+
+        cboExamClassNameItemStateChangeActive=false;
+        
+        classLoad();
+        sectionLoad();
+        subjectLoad();
+        
+        cboExamClassNameItemStateChangeActive=true;
+        
+        examLoad();
     }
 
     public boolean isValidExamForm() {
         examName=txtExamName.getText();
 
+        int examTermIndex=cboExamTerm.getSelectedIndex();
+        int examClassNameIndex=cboExamClassName.getSelectedIndex();
+        int examClassSectionIndex=cboExamClassSection.getSelectedIndex();
+        int examSubjectIndex=cboExamSubject.getSelectedIndex();      
+
         if(examName.isEmpty()) {
-            JOptionPane.showMessageDialog(this,"Please enter an exam");
+            JOptionPane.showMessageDialog(this,"Please enter an exam name");
             txtExamName.requestFocus();
             return false;
         }
+
+        if(examTermIndex==-1) {
+            JOptionPane.showMessageDialog(this,"Please select a term");
+            cboExamTerm.requestFocus();
+            return false;
+        }
+
+        if(dteExamDate.getCalendar()==null) {
+            JOptionPane.showMessageDialog(this,"Please select a date");
+            dteExamDate.requestFocus();
+            return false;
+        }
+
+        if(examClassNameIndex==-1) {
+            JOptionPane.showMessageDialog(this,"Please select a class");
+            cboExamClassName.requestFocus();
+            return false;
+        }
+
+        if(examClassSectionIndex==-1) {
+            JOptionPane.showMessageDialog(this,"Please select a section");
+            cboExamClassSection.requestFocus();
+            return false;
+        }
+
+        if(examSubjectIndex==-1) {
+            JOptionPane.showMessageDialog(this,"Please select a subject");
+            cboExamSubject.requestFocus();
+            return false;
+        }
+
+        examDate=dteExamDate.getDate();
+        examTerm=cboExamTerm.getSelectedItem().toString(); 
+        examClassName=cboExamClassName.getSelectedItem().toString(); 
+        examClassSection=cboExamClassSection.getSelectedItem().toString(); 
+        examSubject=cboExamSubject.getSelectedItem().toString(); 
 
         return true;
     }
 
     public void btnAddActionPerformed(ActionEvent e) {
-
         if(!isValidExamForm()) return;
-
         try {
-            pst = con.prepareStatement("insert into exam(exam_name) values(?)");
+            pst = con.prepareStatement("insert into exam(exam_name,exam_term,exam_date,exam_class_name,exam_class_section,exam_subject) values(?,?,?,?,?,?)");
 
             pst.setString(1,examName);
+            pst.setString(2,examTerm);
+
+            SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+            String date = df.format(examDate);
+
+            pst.setString(3,date);
+
+            pst.setString(4,examClassName);
+            pst.setString(5,examClassSection);
+            pst.setString(6,examSubject);
 
             pst.executeUpdate();
 
             clearExamForm();
 
-            examLoad();
-
             JOptionPane.showMessageDialog(this,"Exam added");
-
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         }
@@ -200,16 +276,23 @@ public class ExamCreation extends JDialog {
         if(!isValidExamForm()) return;
 
         try {
-            pst = con.prepareStatement("update exam set exam_name=? where exam_id=?");
+            pst = con.prepareStatement("update exam set exam_name=?,exam_term=?,exam_date=?,exam_class_name=?,exam_class_section=?,exam_subject=? where exam_id=?");
 
             pst.setString(1,examName);
-            pst.setInt(2,examId);
+            pst.setString(2,examTerm);
+
+            SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+            String date = df.format(examDate);            
+            pst.setString(3,date);
+
+            pst.setString(4,examClassName);
+            pst.setString(5,examClassSection);
+            pst.setString(6,examSubject);
+            pst.setInt(7,examId);
 
             pst.executeUpdate();
 
             clearExamForm();
-
-            examLoad();
 
             btnAdd.setEnabled(true);
 
@@ -250,8 +333,6 @@ public class ExamCreation extends JDialog {
 
                 clearExamForm();
 
-                examLoad();
-
                 btnAdd.setEnabled(true);
 
                 JOptionPane.showMessageDialog(this,"Exam removed");
@@ -268,7 +349,6 @@ public class ExamCreation extends JDialog {
 
     public void btnClearActionPerformed(ActionEvent e) { 
         clearExamForm();
-        examLoad();
         btnAdd.setEnabled(true);        
     }    
 
@@ -276,10 +356,9 @@ public class ExamCreation extends JDialog {
         dispose();
     }
 
-    public void cboExamClassItemStateChanged(ItemEvent e) {
+    public void cboExamClassNameItemStateChanged(ItemEvent e) {
         if(e.getStateChange() == ItemEvent.SELECTED) {
-            Object item = e.getItem();
-            examClass=((JComboBox)item).getSelectedItem().toString();
+            examClassName=e.getItem().toString();
             sectionLoad();
         }
     }
@@ -290,7 +369,6 @@ public class ExamCreation extends JDialog {
         int selectedIndex=tblExam.getSelectedRow();
         examId=(int)d.getValueAt(selectedIndex,0);
 
-        int c;
         try {
             pst=con.prepareStatement("select * from exam where exam_id=?");
 
@@ -298,10 +376,35 @@ public class ExamCreation extends JDialog {
 
             rs=pst.executeQuery();
 
-            ResultSetMetaData rsd=rs.getMetaData();
-
             if(rs.next()) {
-                txtExamName.setText(rs.getString("exam_name"));  
+                examName=rs.getString("exam_name");  
+                examTerm=rs.getString("exam_term"); 
+
+                try {
+                    SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+                    examDate=df.parse(rs.getString("exam_date"));
+                } catch (ParseException pe) {
+                    pe.printStackTrace();
+                }
+
+                examClassName=rs.getString("exam_class_name");
+                examClassSection=rs.getString("exam_class_section");  
+                examSubject=rs.getString("exam_subject"); 
+
+                txtExamName.setText(examName);
+                cboExamTerm.setSelectedItem(examTerm);
+                dteExamDate.setDate(examDate);
+
+                cboExamClassNameItemStateChangeActive=false;
+
+                classLoad();
+                cboExamClassName.setSelectedItem(examClassName);
+                sectionLoad();
+                cboExamClassSection.setSelectedItem(examClassSection);
+                subjectLoad();
+                cboExamSubject.setSelectedItem(examSubject);
+
+                cboExamClassNameItemStateChangeActive=true;
             }
 
         } catch (SQLException sqle) {
@@ -324,16 +427,15 @@ public class ExamCreation extends JDialog {
         lblExamName=new JLabel("Exam Name");
         lblExamTerm=new JLabel("Term");
         lblExamDate=new JLabel("Date");
-        lblExamClass=new JLabel("Class");
-        lblExamSection=new JLabel("Section");
+        lblExamClassName=new JLabel("Class");
+        lblExamClassSection=new JLabel("Section");
         lblExamSubject=new JLabel("Subject");
 
         txtExamName=new JTextField();
         cboExamTerm=new JComboBox(examTerms);
         dteExamDate=new JDateChooser("yyyy/MM/dd","####/##/##",'_');
-
-        cboExamClass=new JComboBox();
-        cboExamSection=new JComboBox();
+        cboExamClassName=new JComboBox();
+        cboExamClassSection=new JComboBox();
         cboExamSubject=new JComboBox();
 
         tblExam=new JTable(new DefaultTableModel(examTableColumnNames,examTableColumnNames.length) {
@@ -355,15 +457,15 @@ public class ExamCreation extends JDialog {
         lblExamName.setBounds(16,16,128,32);
         lblExamTerm.setBounds(16,64,128,32);
         lblExamDate.setBounds(16,112,128,32);
-        lblExamClass.setBounds(16,160,128,32);
-        lblExamSection.setBounds(16,208,128,32);
+        lblExamClassName.setBounds(16,160,128,32);
+        lblExamClassSection.setBounds(16,208,128,32);
         lblExamSubject.setBounds(16,256,128,32);
 
         txtExamName.setBounds(160,16,256,32);
         cboExamTerm.setBounds(160,64,256,32);
         dteExamDate.setBounds(160,112,256,32);
-        cboExamClass.setBounds(160,160,256,32);
-        cboExamSection.setBounds(160,208,256,32);
+        cboExamClassName.setBounds(160,160,256,32);
+        cboExamClassSection.setBounds(160,208,256,32);
         cboExamSubject.setBounds(160,256,256,32);
 
         spExam.setBounds(16,400,600,200);        
@@ -377,15 +479,15 @@ public class ExamCreation extends JDialog {
         add(lblExamName);
         add(lblExamTerm);
         add(lblExamDate);
-        add(lblExamClass);
-        add(lblExamSection);
+        add(lblExamClassName);
+        add(lblExamClassSection);
         add(lblExamSubject);
 
         add(txtExamName);
         add(cboExamTerm);
         add(dteExamDate);
-        add(cboExamClass);
-        add(cboExamSection);
+        add(cboExamClassName);
+        add(cboExamClassSection);
         add(cboExamSubject);
 
         add(spExam);
@@ -395,8 +497,6 @@ public class ExamCreation extends JDialog {
         add(btnRemove);
         add(btnClear);
         add(btnClose);
-
-        classLoad();
 
         btnAdd.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {      
@@ -428,10 +528,12 @@ public class ExamCreation extends JDialog {
                 }
             });
 
-        cboExamClass.addItemListener(new ItemListener() {
+        cboExamClassName.addItemListener(new ItemListener() {
                 public void itemStateChanged(ItemEvent e) {
-                    cboExamClassItemStateChanged(e);                    
-                } 
+                    if(cboExamClassNameItemStateChangeActive) {
+                        cboExamClassNameItemStateChanged(e);
+                    }
+                }
             });
 
         tblExam.addMouseListener(new MouseAdapter() {
@@ -440,12 +542,8 @@ public class ExamCreation extends JDialog {
                 } 
             });
 
-        clearExamForm();
-
         setLocationRelativeTo(null);
-
         setVisible(true);
-
         setModal(true);
     }
 }

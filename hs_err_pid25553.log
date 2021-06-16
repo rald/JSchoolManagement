@@ -1,0 +1,23 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0xa9999a04, pid=25553, tid=25581
+#
+# JRE version: OpenJDK Runtime Environment (11.0.11+9) (build 11.0.11+9-post-Debian-1deb10u1)
+# Java VM: OpenJDK Server VM (11.0.11+9-post-Debian-1deb10u1, mixed mode, g1 gc, linux-)
+# Problematic frame:
+# C  [libc.so.6+0x26a04]
+#
+# Core dump will be written. Default location: core.25553 (may not exist)
+#
+# If you would like to submit a bug report, please visit:
+#   https://bugs.debian.org/openjdk-11
+# The crash happened outside the Java Virtual Machine in native code.
+# See problematic frame for where to report the bug.
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -Dhttps.protocols=TLSv1,TLSv1.1,TLSv1.2 -Djavafx.embed.singleThread=true -Dawt.useSystemAAFontSettings=on bluej.Boot -javafxpath=/usr/share/openjfx
+
+Host: rev 1 (v7l), 4 cores, 1G, 

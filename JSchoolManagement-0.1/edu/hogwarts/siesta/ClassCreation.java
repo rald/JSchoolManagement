@@ -65,24 +65,20 @@ public class ClassCreation extends JDialog {
     }
 
     public void classLoad() {
-        int c;
         try {
             pst=con.prepareStatement("select * from class");
 
             rs=pst.executeQuery();
 
-            ResultSetMetaData rsd=rs.getMetaData();
-            c=rsd.getColumnCount();
             d=(DefaultTableModel)tblClass.getModel();
             d.setRowCount(0);
 
             while(rs.next()) {
-                Vector v=new Vector();
-                for(int i=0;i<c;i++) {
-                    v.add(rs.getInt("class_id"));
-                    v.add(rs.getString("class_name"));
-                    v.add(rs.getString("class_section"));
-                }
+                Vector v = new Vector();
+
+                v.add(rs.getInt("class_id"));
+                v.add(rs.getString("class_name"));
+                v.add(rs.getString("class_section"));
 
                 d.addRow(v);
             }
@@ -122,21 +118,18 @@ public class ClassCreation extends JDialog {
     }
 
     public boolean isValidClass() {
-        try
-        {
+        try {
             pst=con.prepareStatement("select * from class where class_name=? and class_section=?");
             pst.setString(1,className);
             pst.setString(2,classSection);
             rs=pst.executeQuery();
-           
+
             if(rs.next()) {
                 JOptionPane.showMessageDialog(this,"Class already exists");
                 return false;
             }  
-            
-        }
-        catch (SQLException sqle)
-        {
+
+        } catch (SQLException sqle) {
             sqle.printStackTrace();
         }
 
