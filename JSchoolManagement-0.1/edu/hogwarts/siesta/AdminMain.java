@@ -28,6 +28,7 @@ public class AdminMain extends JFrame {
     JButton btnClassCreation;
     JButton btnSubjectCreation;
     JButton btnExamCreation;
+    JButton btnStudentCreation;
 
     AdminMain(int userId,String userName,String userType) {
         initGUI(userId,userName,userType);
@@ -49,6 +50,10 @@ public class AdminMain extends JFrame {
         new ExamCreation();
     }
 
+    public void btnStudentCreationActionPerformed(ActionEvent e) {
+        new StudentCreation();
+    }
+
     public void initGUI(int userId,String userName,String userType) {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("Admin");
@@ -67,6 +72,7 @@ public class AdminMain extends JFrame {
         btnClassCreation=new JButton("Class");
         btnSubjectCreation=new JButton("Subject");
         btnExamCreation=new JButton("Exam");
+        btnStudentCreation=new JButton("Student");
 
         lblUserName.setBounds(16,16,128,32);
         lblUserType.setBounds(16,48,128,32);
@@ -75,6 +81,7 @@ public class AdminMain extends JFrame {
         btnClassCreation.setBounds(16,160,128,32);
         btnSubjectCreation.setBounds(16,208,128,32);
         btnExamCreation.setBounds(16,256,128,32);
+        btnStudentCreation.setBounds(16,304,128,32);
 
         lblUserName.setSize(lblUserName.getPreferredSize());
 
@@ -85,6 +92,7 @@ public class AdminMain extends JFrame {
         add(btnClassCreation);
         add(btnSubjectCreation);
         add(btnExamCreation);
+        add(btnStudentCreation);
 
         btnUserCreation.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
@@ -107,6 +115,12 @@ public class AdminMain extends JFrame {
         btnExamCreation.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     btnExamCreationActionPerformed(e);
+                }    
+            });
+
+        btnStudentCreation.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    btnStudentCreationActionPerformed(e);
                 }    
             });
 
