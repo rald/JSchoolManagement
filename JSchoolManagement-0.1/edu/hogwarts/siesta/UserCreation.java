@@ -1,6 +1,4 @@
-
 /**
- * Write a description of class User here.
  *
  * @author Gerald Q. Cruz
  * @version Fri., Jun. 11, 2021 - 11:45 PM

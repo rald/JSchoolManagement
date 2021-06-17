@@ -29,6 +29,8 @@ public class AdminMain extends JFrame {
     JButton btnSubjectCreation;
     JButton btnExamCreation;
     JButton btnStudentCreation;
+    JButton btnTeacherCreation;
+    JButton btnMarkCreation;
 
     AdminMain(int userId,String userName,String userType) {
         initGUI(userId,userName,userType);
@@ -54,6 +56,14 @@ public class AdminMain extends JFrame {
         new StudentCreation();
     }
 
+    public void btnTeacherCreationActionPerformed(ActionEvent e) {
+        new TeacherCreation();
+    }
+    
+    public void btnMarkCreationActionPerformed(ActionEvent e) {
+        new MarkCreation();
+    }
+
     public void initGUI(int userId,String userName,String userType) {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("Admin");
@@ -73,6 +83,8 @@ public class AdminMain extends JFrame {
         btnSubjectCreation=new JButton("Subject");
         btnExamCreation=new JButton("Exam");
         btnStudentCreation=new JButton("Student");
+        btnTeacherCreation=new JButton("Teacher");
+        btnMarkCreation=new JButton("Mark");
 
         lblUserName.setBounds(16,16,128,32);
         lblUserType.setBounds(16,48,128,32);
@@ -82,6 +94,8 @@ public class AdminMain extends JFrame {
         btnSubjectCreation.setBounds(16,208,128,32);
         btnExamCreation.setBounds(16,256,128,32);
         btnStudentCreation.setBounds(16,304,128,32);
+        btnTeacherCreation.setBounds(16,352,128,32);
+        btnMarkCreation.setBounds(16,400,128,32);
 
         lblUserName.setSize(lblUserName.getPreferredSize());
 
@@ -93,6 +107,8 @@ public class AdminMain extends JFrame {
         add(btnSubjectCreation);
         add(btnExamCreation);
         add(btnStudentCreation);
+        add(btnTeacherCreation);
+        add(btnMarkCreation);
 
         btnUserCreation.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
@@ -121,6 +137,18 @@ public class AdminMain extends JFrame {
         btnStudentCreation.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     btnStudentCreationActionPerformed(e);
+                }    
+            });
+
+        btnTeacherCreation.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    btnTeacherCreationActionPerformed(e);
+                }    
+            });
+            
+        btnMarkCreation.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    btnMarkCreationActionPerformed(e);
                 }    
             });
 
